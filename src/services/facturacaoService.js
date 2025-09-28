@@ -155,6 +155,45 @@ class FaturacaoService {
             return { successo: false, mensagem: "Erro ao renderizar home!" };
         }
     };
+    
+    /**
+     * Buscar as faturações de uma data específica
+     * @param { Number } limit - Limite de registros desejados
+     * @param { Date } data - Data do relatório
+     * @returns { Object| { faturacoes: Array,
+     * successo: Boolean,
+     * mensagem: String }}
+     */
+    pegarTodasFaturacoes = async () => {
+        try {
+            const faturacoesEncontradas = await faturacoes.findAll({
+                raw: true,
+                nest: true,
+                order: [["data_faturacao", "DESC"]]
+            });
+            if (faturacoesEncontradas.length == 0) {
+                return {
+                    successo: false,
+                    mensagem: "Nenhuma faturação encontrada!",
+                };
+            }
+
+            faturacoesEncontradas.map((faturacao) => {
+                faturacao.data_faturacao = getFullStringDate(
+                    faturacao.data_faturacao
+                );
+            });
+
+            return {
+                faturacoes: faturacoesEncontradas,
+                successo: true,
+                mensagem: "Faturações encontradas!",
+            };
+        } catch (error) {
+            console.log("\nErro ao buscar faturações..." + error);
+            return { successo: false, mensagem: "Erro ao renderizar home!" };
+        }
+    };
 
     /**
      * Buscar uma faturação específica

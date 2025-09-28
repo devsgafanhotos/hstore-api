@@ -34,6 +34,16 @@ facturacaoRoutes.get(
  * @access Privado (Autenticado)
  */
 facturacaoRoutes.get(
+  "/all",
+  facturacaoController.buscarTodasFacturacoes
+);
+
+/**
+ * @route GET /facturacao
+ * @description Lista todas as faturas registadas
+ * @access Privado (Autenticado)
+ */
+facturacaoRoutes.get(
   "/mensal",
   facturacaoController.buscarFacturacoesMensal
 );

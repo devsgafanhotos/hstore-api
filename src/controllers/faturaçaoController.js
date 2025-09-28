@@ -102,6 +102,23 @@ class FacturacaoController {
             });
         }
     };
+    
+    /**
+     * @route GET /facturacao
+     * @desc Lista todas as facturações cadastradas.
+     */
+    buscarTodasFacturacoes = async (req, res) => {
+        try {
+            const response = await facturacaoService.pegarTodasFaturacoes();
+
+            res.status(200).json({ facturacao: response.faturacoes });
+        } catch (error) {
+            console.error("Erro ao listar facturações:", error);
+            res.render("pages/error", {
+                titulo: "Internal error"
+            });
+        }
+    };
 
     /**
      * @route GET /facturacao/mensal
