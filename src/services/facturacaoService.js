@@ -19,7 +19,7 @@ class FaturacaoService {
      */
     criarFaturacao = async (usuarioId, dadosFaturacao) => {
         try {
-            const {
+            let {
                 agente_id,
                 valor_electronico,
                 valor_fisico,
@@ -46,8 +46,8 @@ class FaturacaoService {
                 };
             }
 
-            if (valor_electronico || valor_fisico) {
-                if (valor_electronico) {
+            if (valor_electronico > 500 || valor_fisico > 500) {
+                if (valor_electronico > 500) {
                     await faturacoes.create({
                         agente_id: agente_id,
                         usuario_id: usuarioId,
@@ -57,7 +57,7 @@ class FaturacaoService {
                     });
                 }
 
-                if (valor_fisico) {
+                if (valor_fisico > 500) {
                     await faturacoes.create({
                         agente_id: agente_id,
                         usuario_id: usuarioId,
@@ -73,9 +73,21 @@ class FaturacaoService {
                 };
             }
 
+            valor_electronico = valor_electronico.toLocaleString("pt-AO", {
+                style: "currency",
+                currency: "AOA",
+            });
+
+            valor_fisico = valor_fisico.toLocaleString("pt-AO", {
+                style: "currency",
+                currency: "AOA",
+            });
+
             return {
                 successo: true,
-                mensagem: `Saldo Electrônico: ${valor_electronico},00 KZ e Saldo Físico: ${valor_fisico},00 KZ`,
+                mensagem: `Saldo Electrônico: ${
+                    valor_electronico > 500 ? valor_electronico : "0,00"
+                } e Saldo Físico: ${valor_fisico > 500 ? valor_fisico : "0,00"}`,
             };
         } catch (erro) {
             console.error("Erro ao cadastrar faturação:", erro);
@@ -155,7 +167,7 @@ class FaturacaoService {
             return { successo: false, mensagem: "Erro ao renderizar home!" };
         }
     };
-    
+
     /**
      * Buscar as faturações de uma data específica
      * @param { Number } limit - Limite de registros desejados
@@ -169,7 +181,7 @@ class FaturacaoService {
             const faturacoesEncontradas = await faturacoes.findAll({
                 raw: true,
                 nest: true,
-                order: [["data_faturacao", "DESC"]]
+                order: [["data_faturacao", "DESC"]],
             });
             if (faturacoesEncontradas.length == 0) {
                 return {
