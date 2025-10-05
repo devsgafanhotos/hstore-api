@@ -4,28 +4,35 @@
         <section class="main-page-hero">
             <form class="main-page-hero-form">
                 <div class="main-page-hero-form-busca">
-                    <input class="main-page-hero-form-busca-campo" type="date" name="data-relatorio" id="data-relatorio"
-                        min="2016-01-01" max="2050-01-01" value="{{resumoDiario.data}}">
+                    <input class="main-page-hero-form-busca-campo" type="date" name="data" id="data" min="2016-01-01"
+                        max="2050-01-01" value="{{resumoDiario.data}}">
                     <i class="fas fa-calendar-alt fa-1x" style="color: #F7941E;"></i>
                     </i>
                 </div>
                 <select name="filtro" id="filtro">
                     {{#if (eq resumoDiario.filtro "Mensal")}}
-                        <option value="Geral">Geral</option>
-                        <option selected value="Mensal">Mensal</option>
-                        <option value="Quinzenal">Quinzenal</option>
+                    <option value="Geral">Geral</option>
+                    <option selected value="Mensal">Mensal</option>
+                    <option value="Quinzenal">Quinzenal</option>
                     {{else}}
-                            {{#if (eq resumoDiario.filtro "Quinzenal")}}
-                            <option value="Geral">Geral</option>
-                            <option value="Mensal">Mensal</option>
-                            <option selected value="Quinzenal">Quinzenal</option>
-                        {{else}}
-                            <option selected value="Geral">Geral</option>
-                            <option value="Mensal">Mensal</option>
-                            <option value="Quinzenal">Quinzenal</option>
-                        {{/if}}
+                    {{#if (eq resumoDiario.filtro "Quinzenal")}}
+                    <option value="Geral">Geral</option>
+                    <option value="Mensal">Mensal</option>
+                    <option selected value="Quinzenal">Quinzenal</option>
+                    {{else}}
+                    <option selected value="Geral">Geral</option>
+                    <option value="Mensal">Mensal</option>
+                    <option value="Quinzenal">Quinzenal</option>
+                    {{/if}}
                     {{/if}}
                 </select>
+
+                {{#if agente}}
+                <input type="text" name="agente" id="agente" value={{agente.id_agente}}></input>
+                {{else}}
+                <input type="text" name="agente" id="agente" placeholder="Agente ID" ></input>
+                {{/if}}
+                <button>Confirmar</button>
             </form>
             <div class="main-page-titulo">
             </div>

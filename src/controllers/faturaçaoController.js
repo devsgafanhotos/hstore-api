@@ -10,8 +10,8 @@ const agente = models.agentes;
 const faturacao = models.faturacoes;
 const RelatorioService = require("../services/relatorioService");
 const relatorioService = new RelatorioService();
-const { Op, fn, col, where } = require("sequelize")
-const { getStringDate, getFullStringDate, getSimpleDate } = require("../utils")
+const { Op, fn, col, where } = require("sequelize");
+const { getStringDate, getFullStringDate, getSimpleDate } = require("../utils");
 
 class FacturacaoController {
     /**
@@ -41,9 +41,9 @@ class FacturacaoController {
                 [Op.and]: [
                     where(fn("YEAR", col("data_faturacao")), ano),
                     where(fn("MONTH", col("data_faturacao")), mes),
-                    where(col("agente_id"), agenteEncontrado.id_agente)
-                ]
-            }
+                    where(col("agente_id"), agenteEncontrado.id_agente),
+                ],
+            },
         });
 
         return res.render("pages/faturacao/cadastrar", {
@@ -62,7 +62,10 @@ class FacturacaoController {
             const dados = req.body;
             const usuarioId = await req.usuario.id_usuario;
 
-            const response = await facturacaoService.criarFaturacao(usuarioId, dados);
+            const response = await facturacaoService.criarFaturacao(
+                usuarioId,
+                dados
+            );
 
             if (!response.successo) {
                 return res.status(400).send({ msg: response.mensagem });
@@ -81,28 +84,40 @@ class FacturacaoController {
      */
     buscarFacturacoes = async (req, res) => {
         try {
-            let { data, filtro } = req.query;
+            let { data, filtro, agente: agente_id } = req.query;
             if (!data) {
                 data = getStringDate();
             }
             data = new Date(data);
-            const resumoDiario = await relatorioService.pegarResumoDiarioDaEmpresa(data, filtro);
-            const response = await facturacaoService.pegarFaturacoes(data, null, filtro);
+            const resumoDiario =
+                await relatorioService.pegarResumoDiarioDaEmpresa(data, filtro);
+            const response = await facturacaoService.pegarFaturacoes(
+                data,
+                null,
+                filtro,
+                agente_id
+            );
+
+            let agente = "Todos";
+            if (agente_id) {
+                agente = await agenteService.pegarAgentesPorId(agente_id);
+            }
 
             res.render("pages/faturacao/faturacoes", {
                 titulo: "Faturações",
                 resumoDiario: resumoDiario,
                 successo: response.successo,
-                faturacoes: response.faturacoes
+                faturacoes: response.faturacoes,
+                agente: agente,
             });
         } catch (error) {
             console.error("Erro ao listar facturações:", error);
             res.render("pages/error", {
-                titulo: "Internal error"
+                titulo: "Internal error",
             });
         }
     };
-    
+
     /**
      * @route GET /facturacao
      * @desc Lista todas as facturações cadastradas.
@@ -115,7 +130,7 @@ class FacturacaoController {
         } catch (error) {
             console.error("Erro ao listar facturações:", error);
             res.render("pages/error", {
-                titulo: "Internal error"
+                titulo: "Internal error",
             });
         }
     };
@@ -132,21 +147,24 @@ class FacturacaoController {
         data = new Date(data);
 
         try {
-            const response = await relatorioService.pegarResumoMensalDaEmpresa(data, filtro);
+            const response = await relatorioService.pegarResumoMensalDaEmpresa(
+                data,
+                filtro
+            );
 
             if (!response.successo) {
                 return res.redirect("/");
             }
-            
-            res.render('pages/faturacao/faturacoesMensal', {
-                titulo: 'Faturações do Mês',
+
+            res.render("pages/faturacao/faturacoesMensal", {
+                titulo: "Faturações do Mês",
                 resumoMensal: response,
-                successo: response.successo
+                successo: response.successo,
             });
         } catch (error) {
             console.error("Erro ao buscar faturações do mês:", error);
             res.render("pages/error", {
-                titulo: "Internal error"
+                titulo: "Internal error",
             });
         }
     };
@@ -158,23 +176,27 @@ class FacturacaoController {
     buscarFacturacaoPorId = async (req, res) => {
         try {
             const { id: usuarioId } = req.params;
-            const response = await facturacaoService.pegarFaturacaoPorId(usuarioId);
+            const response = await facturacaoService.pegarFaturacaoPorId(
+                usuarioId
+            );
 
             if (!response.successo) {
                 return res.redirect("/faturacao/resolvidas");
             }
 
-            response.faturacao.data_criacao = getFullStringDate(response.faturacao.data_criacao);
+            response.faturacao.data_criacao = getFullStringDate(
+                response.faturacao.data_criacao
+            );
 
             res.render("pages/faturacao/detalhes", {
                 titulo: "Detalhes de Faturação",
                 faturacao: response.faturacao,
-                usuario: response.usuario
+                usuario: response.usuario,
             });
         } catch (error) {
             console.error("Erro ao buscar agente:", error);
             res.render("pages/error", {
-                titulo: "Internal error"
+                titulo: "Internal error",
             });
         }
     };
@@ -186,27 +208,31 @@ class FacturacaoController {
     actualizarPage = async (req, res) => {
         try {
             const { id: idFacturacao } = req.params;
-            const facturacao = await facturacaoService.pegarFaturacaoPorId(idFacturacao);
+            const facturacao = await facturacaoService.pegarFaturacaoPorId(
+                idFacturacao
+            );
 
             if (!facturacao) {
                 return res.redirect("/faturacao/resolvidas");
             }
 
-            const agente = await agenteService.pegarAgentesPorId(facturacao.faturacao.agente_id);
+            const agente = await agenteService.pegarAgentesPorId(
+                facturacao.faturacao.agente_id
+            );
 
             if (!agente) {
                 return res.redirect("/agentes");
-            }            
+            }
 
             res.render("pages/faturacao/editar", {
-                titulo: 'Editar Faturação',
+                titulo: "Editar Faturação",
                 agente: agente,
-                faturacao: facturacao.faturacao
+                faturacao: facturacao.faturacao,
             });
         } catch (error) {
             console.error("Erro ao carregar página de edição:", error);
             res.render("pages/error", {
-                titulo: "Internal error"
+                titulo: "Internal error",
             });
         }
     };
@@ -219,7 +245,9 @@ class FacturacaoController {
         try {
             const dados = req.body;
             // Chama o serviço
-            const response = await facturacaoService.actualizarFacturacao(dados);
+            const response = await facturacaoService.actualizarFacturacao(
+                dados
+            );
 
             if (!response.successo) {
                 return res.status(302).json({ msg: response.mensagem });
@@ -252,53 +280,6 @@ class FacturacaoController {
             return res.status(500).json({ msg: response.mensagem });
         }
     };
-
-    /**
-     * @route PUT /facturacao/resolver
-     * @desc Atualiza o estado de uma facturação.
-
-    resolverFacturacao = async (req, res) => {
-        try {
-            const { id_facturacao } = req.body;
-            const response = await facturacaoService.resolverFacturacao(id_facturacao);
-
-            if (!response.successo) {
-                return res.status(302).json({ msg: response.mensagem });
-            }
-
-            return res.status(200).json({ msg: response.mensagem });
-        } catch (error) {
-            console.error("Erro ao atualizar faturação:", error);
-            return res.status(500).json({ msg: response.mensagem });
-        }
-    };
-
-     * @route GET /facturacao/listar
-     * @desc Lista todas as facturações cadastradas pendentes.
-    facturacoesPendentes = async (req, res) => {
-        try {
-            let { data } = req.query;
-            if (!data) {
-                data = getStringDate();
-            }
-            data = new Date(data);
-            const resumoDiario = await relatorioService.pegarResumoDiarioDaEmpresa(data);
-            const response = await facturacaoService.pegarFaturacoes("Pendente", data);
-
-            res.render("pages/faturacao/pendentes", {
-                titulo: "Faturações Pendentes",
-                resumoDiario: resumoDiario,
-                successo: response.successo,
-                faturacoes: response.faturacoes
-            });
-        } catch (error) {
-            console.error("Erro ao listar facturações:", error);
-            res.render("pages/error", {
-                titulo: "Internal error"
-            });
-        }
-    };
-    */
 }
 
 module.exports = FacturacaoController;

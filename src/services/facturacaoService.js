@@ -87,7 +87,9 @@ class FaturacaoService {
                 successo: true,
                 mensagem: `Saldo Electrônico: ${
                     valor_electronico > 500 ? valor_electronico : "0,00"
-                } e Saldo Físico: ${valor_fisico > 500 ? valor_fisico : "0,00"}`,
+                } e Saldo Físico: ${
+                    valor_fisico > 500 ? valor_fisico : "0,00"
+                }`,
             };
         } catch (erro) {
             console.error("Erro ao cadastrar faturação:", erro);
@@ -103,7 +105,7 @@ class FaturacaoService {
      * successo: Boolean,
      * mensagem: String }}
      */
-    pegarFaturacoes = async (data, limit, filtro) => {
+    pegarFaturacoes = async (data, limit, filtro, agente_id) => {
         try {
             if (!data) {
                 data = new Date();
@@ -122,6 +124,9 @@ class FaturacaoService {
                 forma_pagamento = "%Quinzenal%";
             }
 
+            const agenteCondition =
+                agente_id && where(col("agente_id"), agente_id);
+
             const faturacoesEncontradas = await faturacoes.findAll({
                 raw: true,
                 nest: true,
@@ -134,6 +139,7 @@ class FaturacaoService {
                         where(col("forma_pagamento"), {
                             [Op.like]: forma_pagamento,
                         }),
+                        agenteCondition,
                     ],
                 },
                 order: [["data_faturacao", "DESC"]],

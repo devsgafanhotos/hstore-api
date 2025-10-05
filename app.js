@@ -122,7 +122,7 @@ server.use(routes);
  */
 server.listen(port, () => {
   console.log(
-    `\nServidor rodando em http:localhost:${port}\n`
+    `\nServidor rodando em http://localhost:${port}\n`
   );
 });
 

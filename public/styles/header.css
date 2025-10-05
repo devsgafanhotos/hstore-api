@@ -9,7 +9,6 @@
     --black: #1a1a1a;
 }
 
-
 header {
     background-color: var(--roxo);
     position: fixed;
@@ -166,6 +165,7 @@ header {
 }
 
 .conteiner-menu-hero-btn {
+    display: none;
     background-color: transparent;
     padding: 20px 15px;
     padding-bottom: 0;
@@ -176,7 +176,6 @@ header {
     .menu-hero-btn {
         background-color: transparent;
         border: none;
-        display: none;
         cursor: pointer;
     }
 }
@@ -213,8 +212,6 @@ header {
     }
 
     .conteiner-menu-hero-btn {
-        .menu-hero-btn {
-            display: block;
-        }
+        display: block;
     }
 }
