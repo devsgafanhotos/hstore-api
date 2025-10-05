@@ -27,11 +27,7 @@
                     {{/if}}
                 </select>
 
-                {{#if agente}}
-                <input type="text" name="agente" id="agente" value={{agente.id_agente}}></input>
-                {{else}}
-                <input type="text" name="agente" id="agente" placeholder="Agente ID" ></input>
-                {{/if}}
+                <input type="text" name="agente" id="agente" placeholder="Agente ID" value={{agente.id_agente}}></input>
                 <button>Confirmar</button>
             </form>
             <div class="main-page-titulo">
