@@ -929,7 +929,7 @@ class relatorioService {
         if (!forma_pagamento || forma_pagamento == "%%") {
             if (parcela.includes("Primeira") || parcela.includes("Segunda")) {
                 forma_pagamento = "Quinzenal";
-            } else if ("Única") {
+            } else if (parcela.includes("Única")) {
                 forma_pagamento = "Mensal";
             }
         }
@@ -971,7 +971,8 @@ class relatorioService {
 
         const listaFaturacoes = await faturacoes.findAll({
             attributes: [
-                [fn("count", col("agente_id")), "Total"],
+                [fn("count", col("agente_id")), "Total"],// quantidade de registros
+                [fn("SUM", col("valor")), "TotalVendido"],// soma do campo valor
                 "agente_id",
                 "forma_pagamento",
                 [col("agente.nome"), "agente.nome"],
@@ -995,11 +996,12 @@ class relatorioService {
                     }),
                 ],
             },
-            group: ["agente_id", "forma_pagamento"],
+            group: ["agente_id", "forma_pagamento", "agente.nome", "agente.telefone"],
             order: [[col("agente.nome"), "ASC"]],
             raw: true,
             nest: true,
         });
+
 
         let listaAgentesNaoPagos = [];
         let periodoFaturacao = true;
@@ -1029,39 +1031,27 @@ class relatorioService {
 
         let agentesNaoPagos = 0;
         if (periodoFaturacao) {
-            listaFaturacoes.map(async (f) => {
+            for (const f of listaFaturacoes) {
                 if (
-                    !listaAgentesPagos.find((p) => p.agente_id === f.agente_id)
+                    !listaAgentesPagos.find(p => p.agente_id === f.agente_id)
                 ) {
-                    agentesNaoPagos += 1;
-                    let totalVendido = await faturacoes.sum("valor", {
-                        where: {
-                            [Op.and]: [
-                                where(fn("YEAR", col("data_faturacao")), ano),
-                                where(fn("MONTH", col("data_faturacao")), mes),
-                                where(col("forma_pagamento"), {
-                                    [Op.like]: forma_pagamento,
-                                }),
-                                where(fn("DAY", col("data_faturacao")), {
-                                    [Op.between]: periodo,
-                                }),
-                                where( col("agente_id"), f.agente_id),
-                            ],
-                        },
-                    });
-
-                    const bonus = this.calcularBonusAgente(totalVendido);
-
-                    listaAgentesNaoPagos.push({
-                        nome: f.agente.nome,
-                        agente_id: f.agente_id,
-                        parcela: parcela,
-                        forma_pagamento: f.forma_pagamento,
-                        bonus: bonus.bonus,
-                    });
+                    try {
+                        const bonus = this.calcularBonusAgente(f.TotalVendido);
+                        listaAgentesNaoPagos.push({
+                            nome: f.agente.nome,
+                            agente_id: f.agente_id,
+                            parcela,
+                            forma_pagamento: f.forma_pagamento,
+                            bonus: bonus.bonus,
+                        });
+                        agentesNaoPagos++;
+                    } catch (erro) {
+                        console.error("Erro ao calcular soma:", erro);
+                    }
                 }
-            });
-        }        
+
+            }
+        }
 
         const pagamentosAgentesEncontrados = {
             listaAgentesPagos: listaAgentesPagos,
