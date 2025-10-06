@@ -46,10 +46,11 @@ class relatorioController {
         }
         data = new Date(data);
         try {
-            const response = await relatorioService.pegarResumoQuinzenalDaEmpresa(
-                data,
-                filtro
-            );
+            const response =
+                await relatorioService.pegarResumoQuinzenalDaEmpresa(
+                    data,
+                    filtro
+                );
 
             if (!response.successo) {
                 return res.redirect("/");
@@ -93,7 +94,7 @@ class relatorioController {
     };
 
     buscarAgentesPagos = async (req, res) => {
-        let { data, filtro } = req.query;
+        let { data, filtro, parcela } = req.query;
         if (!data) {
             data = getSimpleDate();
         }
@@ -101,15 +102,46 @@ class relatorioController {
         try {
             const response = await relatorioService.pegarResumoMensalDaEmpresa(
                 data,
-                filtro
+                filtro,
+                parcela
             );
 
             if (!response.successo) {
                 return res.redirect("/");
             }
 
-            res.render("pages/relatorio/pagos", {
+            res.render("pages/pagamento/efeituados", {
                 titulo: "Agentes pagos",
+                resumoMensal: response,
+                successo: response.successo,
+            });
+        } catch (error) {
+            console.error("Erro ao buscar relatório mensal   :", error);
+            res.render("pages/error", {
+                titulo: "Internal error",
+            });
+        }
+    };
+
+    buscarAgentesNaoPagos = async (req, res) => {
+        let { data, filtro, parcela = "Única" } = req.query;
+        if (!data) {
+            data = getSimpleDate();
+        }
+        data = new Date(data);
+        try {
+            const response = await relatorioService.pegarResumoMensalDaEmpresa(
+                data,
+                filtro,
+                parcela
+            );
+
+            if (!response.successo) {
+                return res.redirect("/");
+            }
+
+            res.render("pages/pagamento/pendentes", {
+                titulo: "Agentes não pagos",
                 resumoMensal: response,
                 successo: response.successo,
             });

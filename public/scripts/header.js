@@ -23,10 +23,18 @@ const sub_items_menu = document.querySelectorAll(
 
 items_menu.forEach((item, i) => {
     item.addEventListener("click", () => {
-        if(0 <= i <= 1){
-            sub_items_menu[i].classList.toggle('sub-menu-navegacao-items-item-titulo-visival')
-            const other = i == 1 ? 0 : 1;
-            sub_items_menu[other].classList.remove('sub-menu-navegacao-items-item-titulo-visival')
+        if (0 <= i <= 1) {
+            sub_items_menu[i].classList.toggle(
+                "sub-menu-navegacao-items-item-titulo-visival"
+            );
+
+            for (let other = 0; other < sub_items_menu.length; other++) {
+                if (other != i) {
+                    sub_items_menu[other].classList.remove(
+                        "sub-menu-navegacao-items-item-titulo-visival"
+                    );
+                }
+            }
         }
     });
 });

@@ -4,18 +4,18 @@
         <section class="main-page-hero">
             <form class="main-page-hero-form main-page-hero-form-relatorio-empresa">
                 <div class="main-page-hero-form-busca">
-                    <input class="main-page-hero-form-busca-campo" type="month" name="data"
-                        id="data" min="2016-01" max="2049-12" value="{{resumoQuinzenal.data}}">
+                    <input class="main-page-hero-form-busca-campo" type="month" name="data" id="data" min="2016-01"
+                        max="2049-12" value="{{resumoQuinzenal.data}}">
                     <i class="fas fa-calendar-alt fa-1x" style="color: #F7941E;"></i>
                 </div>
 
                 <select name="filtro" id="filtro">
                     {{#if (eq resumoQuinzenal.filtro "Segunda")}}
-                        <option value="Primeira">Primeira</option>
-                        <option selected value="Segunda">Segunda</option>
+                    <option value="Primeira">Primeira</option>
+                    <option selected value="Segunda">Segunda</option>
                     {{else}}
-                        <option selected value="Primeira">Primeira</option>
-                        <option value="Segunda">Segunda</option>
+                    <option selected value="Primeira">Primeira</option>
+                    <option value="Segunda">Segunda</option>
                     {{/if}}
                 </select>
                 <button>Confirmar</button>
@@ -45,19 +45,18 @@
                 <p>Faturações</p>
                 <h3>{{resumoQuinzenal.totalFaturacoes}}</h3>
             </a>
-            <a href="/relatorios/agentespagos?data={{resumoQuinzenal.data}}&filtro=Quinzenal"" class="main-page-cards-card expancivel">
+            <a href="/pagamentos/efeituados?data={{resumoQuinzenal.data}}&filtro=Quinzenal"
+                class="main-page-cards-card expancivel">
                 <i class="fas fa-check-circle fa-2x" style="color: #F7941E;"></i>
                 <p>Sub-agentes Pagos</p>
                 <h3>{{resumoQuinzenal.agentesPagos}}</h3>
             </a>
+        </section>
+
+        <div class="graficoContainer">
+            <canvas id="graficoVendas"></canvas>
+        </div>
 
 
-            </section>
-         
-            <div class="graficoContainer">
-                    <canvas id="graficoVendas"></canvas>
-            </div>
-       
-        
     </div>
 </main>

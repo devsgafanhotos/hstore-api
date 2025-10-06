@@ -303,30 +303,36 @@ class relatorioService {
      * totalVendido: Number,
      * agentesPagos: Number,
      * listaAgentesPagos: Object[Array],
+     * listaAgentesNaoPagos: Object[Array],
      * listaFaturacoes: Object[Array],
      * data: Date,
      * successo: boolean
      * }}}
      */
-    pegarResumoMensalDaEmpresa = async (data, filtro) => {
+    pegarResumoMensalDaEmpresa = async (data, filtro, parcela = "%%") => {
         if (!data) {
             data = new Date();
         }
         const ano = new Date(data).getFullYear();
         const mes = new Date(data).getMonth() + 1;
 
-        let parcela;
         let forma_pagamento;
         if (!filtro || filtro.includes("Geral")) {
             filtro = "Geral";
-            parcela = "%%";
+            if (!parcela) {
+                parcela = "%%";
+            }
             forma_pagamento = "%%";
         } else if (filtro.includes("Mensal")) {
-            parcela = "%nica%";
-            forma_pagamento = "%Mensal%";
+            if (!parcela) {
+                parcela = "Única";
+            }
+            forma_pagamento = "Mensal";
         } else if (filtro.includes("Quinzenal")) {
-            parcela = "%e%";
-            forma_pagamento = "%Quinzenal%";
+            if (!parcela) {
+                parcela = "%e%";
+            }
+            forma_pagamento = "Quinzenal";
         }
         /**
          * @description Total pago de bonus aos agentes
@@ -370,6 +376,35 @@ class relatorioService {
                     }),
                 ],
             },
+        });
+
+        const listaFaturacoes = await faturacoes.findAll({
+            attributes: [
+                [fn("count", col("agente_id")), "Total"],
+                "agente_id",
+                "forma_pagamento",
+                [col("agente.nome"), "agente.nome"],
+                [col("agente.telefone"), "agente.telefone"],
+            ],
+            include: {
+                model: models.agentes,
+                as: "agente",
+                attributes: [],
+                order: [["nome", "ASC"]],
+            },
+            where: {
+                [Op.and]: [
+                    where(fn("YEAR", col("data_faturacao")), ano),
+                    where(fn("MONTH", col("data_faturacao")), mes),
+                    where(col("forma_pagamento"), {
+                        [Op.like]: forma_pagamento,
+                    }),
+                ],
+            },
+            group: ["agente_id", "forma_pagamento"],
+            order: [[col("agente.nome"), "ASC"]],
+            raw: true,
+            nest: true,
         });
 
         /**
@@ -419,8 +454,11 @@ class relatorioService {
             totalFaturacoes: totalFaturacoes,
             agentesPagos: agentesPagos,
             listaAgentesPagos: responsePagamentos.listaAgentesPagos,
-            listaFaturacoes: responsePagamentos.listaFaturacoes,
+            listaFaturacoes: listaFaturacoes,
+            agentesNaoPagos: responsePagamentos.agentesNaoPagos,
+            listaAgentesNaoPagos: responsePagamentos.listaAgentesNaoPagos,
             data: getSimpleDate(data),
+            parcela: parcela,
             filtro: filtro,
             successo: true,
         };
@@ -456,12 +494,12 @@ class relatorioService {
 
         if (!filtro || filtro.includes("Primeira")) {
             filtro = "Primeira";
-            parcela = "%Primeira%";
-            forma_pagamento = "%Quinzenal%";
+            parcela = "Primeira";
+            forma_pagamento = "Quinzenal";
             periodo = [1, 15];
         } else if (filtro.includes("Segunda")) {
-            parcela = "%Segunda%";
-            forma_pagamento = "%Quinzenal%";
+            parcela = "Segunda";
+            forma_pagamento = "Quinzenal";
             periodo = [16, 32];
         }
         /**
@@ -548,7 +586,11 @@ class relatorioService {
             totalVendido = 0.0;
         }
 
-        const responsePagamentos = await this.buscarAgentesPagosNaoPagos(data);
+        const responsePagamentos = await this.buscarAgentesPagosNaoPagos(
+            data,
+            "Quizenal",
+            parcela
+        );
 
         const resumoMensal = {
             totalPago: totalPago,
@@ -560,6 +602,7 @@ class relatorioService {
             listaFaturacoes: responsePagamentos.listaFaturacoes,
             data: getSimpleDate(data),
             filtro: filtro,
+            parcela: parcela,
             successo: true,
         };
         return resumoMensal;
@@ -881,10 +924,26 @@ class relatorioService {
      * listaFaturacoes: Object
      * }}}
      */
+
     buscarAgentesPagosNaoPagos = async (data, forma_pagamento, parcela) => {
-        if (!forma_pagamento) {
-            forma_pagamento = "%%";
+        if (!forma_pagamento || forma_pagamento == "%%") {
+            if (parcela.includes("Primeira") || parcela.includes("Segunda")) {
+                forma_pagamento = "Quinzenal";
+            } else if ("Única") {
+                forma_pagamento = "Mensal";
+            }
         }
+
+        let periodo;
+
+        if (!parcela || parcela.includes("Primeira")) {
+            periodo = [1, 15];
+        } else if (parcela.includes("Segunda")) {
+            periodo = [16, 32];
+        } else {
+            periodo = [1, 32];
+        }
+
         if (!data) {
             data = new Date();
         }
@@ -931,6 +990,9 @@ class relatorioService {
                     where(col("forma_pagamento"), {
                         [Op.like]: forma_pagamento,
                     }),
+                    where(fn("DAY", col("data_faturacao")), {
+                        [Op.between]: periodo,
+                    }),
                 ],
             },
             group: ["agente_id", "forma_pagamento"],
@@ -939,9 +1001,73 @@ class relatorioService {
             nest: true,
         });
 
+        let listaAgentesNaoPagos = [];
+        let periodoFaturacao = true;
+        /**
+         * @description Para ter a lista de agentes não pagos devemos estar fora do periodo de faturação
+         */
+        const mesAtual = new Date().getMonth() + 1;
+        // Se a parcela for única ou a segunda
+        if (parcela.includes("Única") || parcela.includes("Segunda")) {
+            /**
+             * @description O pagamento não pode ser feito no mesmo mês, ou seja só podemos pagar um agente na condição anterior no mês a seguir ao mês atual
+             */
+            if (mesAtual <= mes) {
+                periodoFaturacao = false;
+            }
+        } else if (parcela.includes("Primeira")) {
+            /**
+             * @description Se for a primeira parcela ela pode ser paga depois da primeira quinzena do mes atual
+             */
+            const diaAtual = new Date().toJSON().slice(8, 10);
+            if (mesAtual <= mes) {
+                if (diaAtual <= 15) {
+                    periodoFaturacao = false;
+                }
+            }
+        }
+
+        let agentesNaoPagos = 0;
+        if (periodoFaturacao) {
+            listaFaturacoes.map(async (f) => {
+                if (
+                    !listaAgentesPagos.find((p) => p.agente_id === f.agente_id)
+                ) {
+                    agentesNaoPagos += 1;
+                    let totalVendido = await faturacoes.sum("valor", {
+                        where: {
+                            [Op.and]: [
+                                where(fn("YEAR", col("data_faturacao")), ano),
+                                where(fn("MONTH", col("data_faturacao")), mes),
+                                where(col("forma_pagamento"), {
+                                    [Op.like]: forma_pagamento,
+                                }),
+                                where(fn("DAY", col("data_faturacao")), {
+                                    [Op.between]: periodo,
+                                }),
+                                where( col("agente_id"), f.agente_id),
+                            ],
+                        },
+                    });
+
+                    const bonus = this.calcularBonusAgente(totalVendido);
+
+                    listaAgentesNaoPagos.push({
+                        nome: f.agente.nome,
+                        agente_id: f.agente_id,
+                        parcela: parcela,
+                        forma_pagamento: f.forma_pagamento,
+                        bonus: bonus.bonus,
+                    });
+                }
+            });
+        }        
+
         const pagamentosAgentesEncontrados = {
             listaAgentesPagos: listaAgentesPagos,
             listaFaturacoes: listaFaturacoes,
+            agentesNaoPagos: agentesNaoPagos,
+            listaAgentesNaoPagos: listaAgentesNaoPagos,
         };
         return pagamentosAgentesEncontrados;
     };

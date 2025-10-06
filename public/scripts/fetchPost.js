@@ -4,17 +4,10 @@ const formLogin = document.querySelector(".main-page-form-login-usuario");
 if (formLogin) {
 	formLogin.addEventListener("submit", (event) => {
 		event.preventDefault();
-		if (loaderContainer) {
-			loaderContainer.style.display = "flex"; // Exibe o loader
-		}
 
 		const formDate = new FormData(formLogin);
 		const bodyForm = Object.fromEntries(formDate.entries());
-		fetchPost("/usuarios/login", bodyForm, "/").then(() => {
-			if (loaderContainer) {
-				loaderContainer.style.display = "none"; // Esconde o loader após a resposta
-			}
-		});
+		fetchPost("/usuarios/login", bodyForm, "/")
 	});
 }
 
@@ -24,17 +17,10 @@ const formCadastroUsuario = document.querySelector(
 if (formCadastroUsuario) {
 	formCadastroUsuario.addEventListener("submit", (event) => {
 		event.preventDefault();
-		if (loaderContainer) {
-			loaderContainer.style.display = "flex"; // Exibe o loader
-		}
 
 		const formDate = new FormData(formCadastroUsuario);
 		const bodyForm = Object.fromEntries(formDate.entries());
-		fetchPost("/usuarios/cadastrar", bodyForm, "/usuarios").then(() => {
-			if (loaderContainer) {
-				loaderContainer.style.display = "none"; // Esconde o loader após a resposta
-			}
-		});
+		fetchPost("/usuarios/cadastrar", bodyForm, "/usuarios")
 	});
 }
 
@@ -45,17 +31,9 @@ if (formCadastroAgente) {
 	formCadastroAgente.addEventListener("submit", (event) => {
 		event.preventDefault();
 
-		if (loaderContainer) {
-			loaderContainer.style.display = "flex"; // Exibe o loader
-		}
-
 		const formDate = new FormData(formCadastroAgente);
 		const bodyForm = Object.fromEntries(formDate.entries());
-		fetchPost("/agentes/cadastrar", bodyForm, "/agentes").then(() => {
-			if (loaderContainer) {
-				loaderContainer.style.display = "none"; // Esconde o loader após a resposta
-			}
-		});
+		fetchPost("/agentes/cadastrar", bodyForm, "/agentes");
 	});
 }
 
@@ -65,9 +43,6 @@ const formCadastroFaturacao = document.querySelector(
 if (formCadastroFaturacao) {
 	formCadastroFaturacao.addEventListener("submit", (event) => {
 		event.preventDefault();
-		if (loaderContainer) {
-			loaderContainer.style.display = "flex"; // Exibe o loader
-		}
 
 		const formDate = new FormData(formCadastroFaturacao);
 		const bodyForm = Object.fromEntries(formDate.entries());
@@ -77,11 +52,7 @@ if (formCadastroFaturacao) {
 			"/faturacao/cadastrar",
 			bodyForm,
 			`/agentes/perfil/${bodyForm.agente_id}`
-		).then(() => {
-			if (loaderContainer) {
-				loaderContainer.style.display = "none"; // Esconde o loader após a resposta
-			}
-		});
+		)
 	});
 }
 
@@ -91,23 +62,18 @@ if (formPagar) {
 		form
 			.addEventListener("submit", (event) => {
 				event.preventDefault();
-				if (loaderContainer) {
-					loaderContainer.style.display = "flex"; // Exibe o loader
-				}
-
 				const formDate = new FormData(form);
 				const bodyForm = Object.fromEntries(formDate.entries());
 				fetchPost("/agentes/relatorio/pagar", bodyForm, window.location.href);
 			})
-			.then(() => {
-				if (loaderContainer) {
-					loaderContainer.style.display = "none"; // Esconde o loader após a resposta
-				}
-			});
 	});
 }
 
 async function fetchPost(url, body, newPage) {
+    if (loaderContainer) {
+        loaderContainer.style.display = "flex"; // Exibe o loader
+    }
+    
 	const response = await fetch(url, {
 		method: "POST",
 		headers: { "Content-Type": "application/json" },
@@ -116,11 +82,14 @@ async function fetchPost(url, body, newPage) {
 	const res = await response.json();
 
 	if (response.status > 299) {
+        if (loaderContainer) {
+            loaderContainer.style.display = "none"; // Esconde o loader após a resposta
+        }
 		if (res.page) {
-			alert(res.msg);
+			showAlert(res.msg, true);
 			return (window.location.href = res.page);
 		}
-		return alert(res.msg);
+		return showAlert(res.msg, true);
 	}
 
 	if (res.msg === "Logado") {
@@ -133,6 +102,9 @@ async function fetchPost(url, body, newPage) {
 		return (window.location.href = newPage);
 	}
 
-	alert(res.msg);
-	return (window.location.href = newPage);
+    if (loaderContainer) {
+        loaderContainer.style.display = "none"; // Esconde o loader após a resposta
+    }
+    showAlert(res.msg);
+    return (window.location.href = newPage);
 }

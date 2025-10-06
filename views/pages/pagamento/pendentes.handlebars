@@ -1,0 +1,77 @@
+{{>header}}
+<main class="main-page">
+    <div class="main-page-cabeca">
+        <section class="main-page-hero">
+            <form class="main-page-hero-form">
+                <div class="main-page-hero-form-busca">
+                    <input class="main-page-hero-form-busca-campo" type="month" name="data" id="data" min="2016-01"
+                        max="2049-12" value="{{resumoMensal.data}}">
+                    <i class="fas fa-calendar-alt fa-1x" style="color: #F7941E;"></i>
+                </div>
+
+                <select name="parcela" id="parcela">
+                        {{#if (eq resumoMensal.parcela "Segunda")}}
+                            <option value="Única">Única</option>
+                            <option value="Primeira">Primeira</option>
+                            <option selected value="Segunda">Segunda</option>
+                        {{else}}
+                            
+                            {{#if (eq resumoMensal.parcela "Primeira")}}
+                                <option value="Única">Única</option>
+                                <option selected value="Primeira">Primeira</option>
+                                <option value="Segunda">Segunda</option>
+                            {{else}}
+                                <option selected value="Única">Única</option>
+                                <option value="Primeira">Primeira</option>
+                                <option value="Segunda">Segunda</option>
+                            {{/if}}
+
+                        {{/if}}
+                </select>
+                <button>Confirmar</button>
+            </form>
+        </section>
+        <h2 class="main-page-lista-cabeçalho">Sub-agentes Não Pagos
+            <a class="btn-plus numero-total">{{resumoMensal.agentesNaoPagos}}</a>
+        </h2>
+    </div>
+    <section class="main-page-lista">
+        {{#if resumoMensal.listaAgentesNaoPagos}}
+        {{#each resumoMensal.listaAgentesNaoPagos}}
+        
+            <div class="main-page-faturacoes-faturacao" id="main-page-faturacoes-faturacao-pendente">
+                <a href="/agentes/relatorio/{{this.agente_id}}?data={{../resumoMensal.data}}&parcela={{this.parcela}}">
+                    <div>
+                        <aside>
+                            <p class="nome"> {{this.nome}}</p>
+                            <h3>{{this.agente_id}}</h3>
+                        </aside>
+
+                        <div>
+                            <p>Pagamento: {{this.forma_pagamento}} </p>
+                            <p>Parcela:  {{this.parcela}} </p>
+                        </div>
+                    </div>
+                </a>
+
+                <div>
+                    <h3 class="cash-pendente"> <span id="plus"> </span>{{getMoeda this.bonus}}</h3>
+                    <div class="form-pagar">
+                        <form>
+                            <input type="number" name="id_agente" id="id_agente" value="{{this.agente_id}}">
+                            <input class="main-page-hero-form-busca-campo" type="month" name="data_relatorio" id="data-relatorio" value="{{../resumoMensal.data}}">
+                            <input type="text" name="parcela" id="parcela" value="{{this.parcela}}">
+                            <button>Registrar Pagamento</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        
+        {{/each}}
+        {{else}}
+        <div class="main-page-faturacoes-faturacao">
+            <p class="nome">Sem pagamentos pendente!</p>
+        </div>
+        {{/if}}
+    </section>
+</main>

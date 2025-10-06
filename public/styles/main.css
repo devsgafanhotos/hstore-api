@@ -244,9 +244,51 @@
 
         .nome {
             color: var(--roxoProfundo);
+
             font-weight: 400;
         }
     }
+
+    #main-page-faturacoes-faturacao-pendente {
+        div {
+            flex: auto;
+        }
+    }
+
+    #main-page-faturacoes-faturacao-pendente>a {
+        div {
+            display: flex;
+            flex-flow: column;
+            gap: 5px;
+
+            aside { 
+                display: flex;
+                justify-content: space-between;
+                max-width: 250px;
+                p {
+                    font-size: 1.2em;
+                    color: var(--roxoProfundo);
+                }
+                h3 {
+                    color: var(--roxoProfundo);
+                    font-weight: 400;
+                }
+            }
+        }
+    }
+
+    #main-page-faturacoes-faturacao-pendente>div {
+        display: flex;
+        flex-flow: column;
+        gap: 5px;
+
+        padding: 10px;
+
+        h3 {
+            text-align: right;
+        }
+    }
+
 
     .cash {
         width: 100%;
@@ -414,6 +456,6 @@
             }
         }
 
-        
+
     }
 }

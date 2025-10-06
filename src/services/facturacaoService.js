@@ -7,6 +7,7 @@ const models = initModels(sequelize);
 const faturacoes = models.faturacoes;
 const agente = models.agentes;
 const usuario = models.usuarios;
+
 /**
  * Serviço responsável por realisar todas as operações que envolvem a geração de relatórios.
  */
@@ -17,6 +18,7 @@ class FaturacaoService {
      * @param { Object } dados - Dados da faturação, como: valor, id_agente...
      * @returns { Object }}
      */
+
     criarFaturacao = async (usuarioId, dadosFaturacao) => {
         try {
             let {

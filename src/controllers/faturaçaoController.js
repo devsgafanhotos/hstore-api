@@ -149,12 +149,13 @@ class FacturacaoController {
         try {
             const response = await relatorioService.pegarResumoMensalDaEmpresa(
                 data,
-                filtro
+                filtro,
             );
 
             if (!response.successo) {
                 return res.redirect("/");
             }
+            
 
             res.render("pages/faturacao/faturacoesMensal", {
                 titulo: "Faturações do Mês",

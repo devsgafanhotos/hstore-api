@@ -252,8 +252,16 @@ if (document.querySelector(".modal-busca")) {
 
                 // Limpa conteúdo e campo
                 resultadoBusca.innerHTML = "";
-                {campoBuscaAgente ? campoBuscaAgente.value = "" : campoBuscaAgente.value};
-                {campoBuscaUsuario ? campoBuscaUsuario.value = "" : campoBuscaUsuario.value};
+                {
+                    campoBuscaAgente
+                        ? (campoBuscaAgente.value = "")
+                        : campoBuscaAgente.value;
+                }
+                {
+                    campoBuscaUsuario
+                        ? (campoBuscaUsuario.value = "")
+                        : campoBuscaUsuario.value;
+                }
             }
         });
 }

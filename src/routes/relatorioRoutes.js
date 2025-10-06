@@ -26,7 +26,21 @@ const relatorioRoutes = express.Router();
  * @access Privado (Autenticado)
  */
 relatorioRoutes.get(
-  "/mensal",
+  "/relatorios/insight",
+  autenticacaoMiddleware.verificarAutenticacao,
+  relatorioController.buscarRelatorioInsight
+);
+
+/**
+ * @route GET /relatorio/mensal
+ * @group Relatório - Operações relacionadas a relatórios
+ * @returns {Object} 200 - Lista de faturas
+ * @returns {Error} 401 - Não autorizado
+ * @description Lista todas as faturas registadas
+ * @access Privado (Autenticado)
+ */
+relatorioRoutes.get(
+  "/relatorios/mensal",
   autenticacaoMiddleware.verificarAutenticacao,
   relatorioController.buscarRelatorioMensal
 );
@@ -40,24 +54,23 @@ relatorioRoutes.get(
  * @access Privado (Autenticado)
  */
 relatorioRoutes.get(
-  "/quinzenal",
+  "/relatorios/quinzenal",
   autenticacaoMiddleware.verificarAutenticacao,
   relatorioController.buscarRelatorioQuinzenal
 );
 
 
 /**
- * @route GET /relatorio/mensal
- * @group Relatório - Operações relacionadas a relatórios
+ * @route GET /relatorio/agentespagos
  * @returns {Object} 200 - Lista de faturas
  * @returns {Error} 401 - Não autorizado
- * @description Lista todas as faturas registadas
+ * @description Listar os agentes já pagos em determinado periodo
  * @access Privado (Autenticado)
  */
 relatorioRoutes.get(
-  "/insight",
+  "/pagamentos/efeituados",
   autenticacaoMiddleware.verificarAutenticacao,
-  relatorioController.buscarRelatorioInsight
+  relatorioController.buscarAgentesPagos
 );
 
 /**
@@ -68,9 +81,9 @@ relatorioRoutes.get(
  * @access Privado (Autenticado)
  */
 relatorioRoutes.get(
-  "/agentespagos",
+  "/pagamentos/pendentes",
   autenticacaoMiddleware.verificarAutenticacao,
-  relatorioController.buscarAgentesPagos
+  relatorioController.buscarAgentesNaoPagos
 );
 
 // Exporta o roteador

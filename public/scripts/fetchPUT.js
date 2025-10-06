@@ -5,21 +5,13 @@ if (formEditUsuario) {
     formEditUsuario.addEventListener("submit", (event) => {
         event.preventDefault();
 
-        if (loaderContainerPut) {
-            loaderContainerPut.style.display = "flex"; // Exibe o loader
-        }
-
         const formDate = new FormData(formEditUsuario);
         const bodyForm = Object.fromEntries(formDate.entries());
         fetchPut(
             "/usuarios/editar",
             bodyForm,
             `/usuarios/perfil/${bodyForm.id_usuario}`
-        ).then(() => {
-            if (loaderContainerPut) {
-                loaderContainerPut.style.display = "none"; // Esconde o loader após a resposta
-            }
-        });
+        );
     });
 }
 
@@ -38,11 +30,7 @@ if (formEditSenhaUsuario) {
                 "/usuarios/editarsenha",
                 bodyForm,
                 `/usuarios/perfil/${bodyForm.id_usuario}`
-            ).then(() => {
-                if (loaderContainerPut) {
-                    loaderContainerPut.style.display = "none"; // Esconde o loader após a resposta
-                }
-            });
+            );
         } else {
             alert("As senhas não correspondem.");
         }
@@ -54,21 +42,13 @@ if (formEditAgente) {
     formEditAgente.addEventListener("submit", (event) => {
         event.preventDefault();
 
-        if (loaderContainerPut) {
-            loaderContainerPut.style.display = "flex"; // Exibe o loader
-        }
-
         const formDate = new FormData(formEditAgente);
         const bodyForm = Object.fromEntries(formDate.entries());
         fetchPut(
             "/agentes/editar",
             bodyForm,
             `/agentes/perfil/${bodyForm.id_agente}`
-        ).then(() => {
-            if (loaderContainerPut) {
-                loaderContainerPut.style.display = "none"; // Esconde o loader após a resposta
-            }
-        });
+        );
     });
 }
 
@@ -113,6 +93,9 @@ if (formMudarFormaPagamento) {
 }
 
 async function fetchPut(url, body, newPage) {
+    if (loaderContainer) {
+        loaderContainer.style.display = "flex"; // Exibe o loader
+    }
     const response = await fetch(url, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
@@ -121,13 +104,22 @@ async function fetchPut(url, body, newPage) {
     const res = await response.json();
 
     if (response.status == 350) {
+        if (loaderContainer) {
+            loaderContainer.style.display = "none"; // Esconde o loader após a resposta
+        }
         alert(res.msg);
         return (window.location.href = "/");
     }
 
     if (response.status > 299) {
+        if (loaderContainer) {
+            loaderContainer.style.display = "none"; // Esconde o loader após a resposta
+        }
         return alert(res.msg);
     }
 
+    if (loaderContainer) {
+        loaderContainer.style.display = "none"; // Esconde o loader após a resposta
+    }
     return (window.location.href = newPage);
 }

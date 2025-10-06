@@ -114,20 +114,4 @@ facturacaoRoutes.put(
 );
 
 
-/**
- * @route PUT /facturacao/resolver
- * @description Muda o estado de uma fatura
- * @access Privado (Autenticado)
-facturacaoRoutes.put(
-  "/resolver",
-  autenticacaoMiddleware.verificarAdmin,
-  facturacaoController.resolverFacturacao
-);
-facturacaoRoutes.get(
-  "/pendentes",
-  facturacaoController.facturacoesPendentes
-);
-*/
-// Exporta o roteador
-
 module.exports = { facturacaoRoutes };

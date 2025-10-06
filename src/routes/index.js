@@ -68,7 +68,7 @@ routes.use(
  * Protegidas por autenticação
  */
 routes.use(
-  "/relatorios",
+  "",
   autenticacaoMiddleware.verificarAutenticacao,
   autenticacaoMiddleware.verificarAdmin,
   relatorioRoutes
