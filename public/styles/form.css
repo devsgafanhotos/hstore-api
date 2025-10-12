@@ -170,7 +170,6 @@
             cursor: pointer;
         }
 
-
         .main-page-hero-form-busca {
             flex: auto;
             background-color: var(--white);
@@ -221,15 +220,11 @@
 
             input[type="date"] {
                 cursor: pointer;
-                width: 160px;
             }
 
             input[type="month"] {
                 cursor: pointer;
-                width: 160px;
             }
-
-
         }
     }
 
