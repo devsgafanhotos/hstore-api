@@ -138,7 +138,7 @@
         background-color: var(--white);
         overflow: hidden;
         border-radius: 8px;
-        
+
         select {
             font-size: .85em;
             border: none;
@@ -150,7 +150,8 @@
             border-radius: 0;
         }
 
-        input[name = "agente"], input[name = "nome"] {
+        input[name="agente"],
+        input[name="nome"] {
             font-size: .7em;
             border: none;
             outline: none;
@@ -225,6 +226,34 @@
             input[type="month"] {
                 cursor: pointer;
             }
+        }
+    }
+
+    #main-page-form {
+        display: block;
+        background-color: var(--gray);
+        align-self: flex-end;
+
+        input[name="nome"] {
+            font-size: .85em;
+            border: none;
+            outline: none;
+            padding: 8px 10px;
+            margin-bottom: 5px;
+            background-color: var(--white);
+            border-left: 1px solid var(--gray);
+
+            border-radius: 8px;
+            width: 250px;
+        }
+
+        section {
+            display: flex;
+            gap: 4px;
+
+            background-color: var(--white);
+            overflow: hidden;
+            border-radius: 8px;
         }
     }
 
