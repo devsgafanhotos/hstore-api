@@ -150,7 +150,7 @@
             border-radius: 0;
         }
 
-        input[name = "agente"] {
+        input[name = "agente"], input[name = "nome"] {
             font-size: .7em;
             border: none;
             outline: none;
@@ -158,7 +158,7 @@
             background-color: var(--white);
             border-left: 1px solid var(--gray);
             border-right: 1px solid var(--gray);
-            width: 60px;
+            width: 70px;
         }
 
         button {

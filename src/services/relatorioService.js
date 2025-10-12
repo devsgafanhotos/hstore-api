@@ -116,23 +116,22 @@ class relatorioService {
         const comprasEfetuadas = await faturacoes.count({
             where: {
                 [Op.and]: [
-                        where(col("data_faturacao"), {
-                                    [Op.between]: [dataIn, dataFi,]
-                                }),
-                        where(col("agente_id"), id_agente),
-                    ],
+                    where(col("data_faturacao"), {
+                        [Op.between]: [dataIn, dataFi],
+                    }),
+                    where(col("agente_id"), id_agente),
+                ],
             },
         });
-        
 
         let totalComprado = await faturacoes.sum("valor", {
             where: {
                 [Op.and]: [
-                        where(col("data_faturacao"), {
-                                    [Op.between]: [dataIn, dataFi,]
-                                }),
-                        where(col("agente_id"), id_agente),
-                    ],
+                    where(col("data_faturacao"), {
+                        [Op.between]: [dataIn, dataFi],
+                    }),
+                    where(col("agente_id"), id_agente),
+                ],
             },
         });
         if (!totalComprado) {
@@ -346,7 +345,7 @@ class relatorioService {
      * successo: boolean
      * }}}
      */
-    pegarResumoMensalDaEmpresa = async (data, filtro, parcela = "%%") => {
+    pegarResumoMensalDaEmpresa = async (data, filtro, parcela = "%%", nome) => {
         if (!data) {
             data = new Date();
         }
@@ -481,7 +480,8 @@ class relatorioService {
         const responsePagamentos = await this.buscarAgentesPagosNaoPagos(
             data,
             forma_pagamento,
-            parcela
+            parcela,
+            nome
         );
 
         const resumoMensal = {
@@ -962,7 +962,12 @@ class relatorioService {
      * }}}
      */
 
-    buscarAgentesPagosNaoPagos = async (data, forma_pagamento, parcela) => {
+    buscarAgentesPagosNaoPagos = async (
+        data,
+        forma_pagamento,
+        parcela,
+        nome
+    ) => {
         if (!forma_pagamento || forma_pagamento == "%%") {
             if (parcela.includes("Primeira") || parcela.includes("Segunda")) {
                 forma_pagamento = "Quinzenal";
@@ -1077,16 +1082,20 @@ class relatorioService {
                     !listaAgentesPagos.find((p) => p.agente_id === f.agente_id)
                 ) {
                     try {
-                        const bonus = this.calcularBonusAgente(f.TotalVendido);
-                        listaAgentesNaoPagos.push({
-                            nome: f.agente.nome,
-                            agente_id: f.agente_id,
-                            parcela,
-                            forma_pagamento: f.forma_pagamento,
-                            bonus: bonus.bonus,
-                            resto: bonus.resto,
-                        });
-                        agentesNaoPagos++;
+                        if (!nome || f.agente.nome.toLowerCase().includes(nome.toLowerCase())) {
+                            const bonus = this.calcularBonusAgente(
+                                f.TotalVendido
+                            );
+                            listaAgentesNaoPagos.push({
+                                nome: f.agente.nome,
+                                agente_id: f.agente_id,
+                                parcela,
+                                forma_pagamento: f.forma_pagamento,
+                                bonus: bonus.bonus,
+                                resto: bonus.resto,
+                            });
+                            agentesNaoPagos++;
+                        }
                     } catch (erro) {
                         console.error("Erro ao calcular soma:", erro);
                     }

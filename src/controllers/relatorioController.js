@@ -124,7 +124,7 @@ class relatorioController {
     };
 
     buscarAgentesNaoPagos = async (req, res) => {
-        let { data, filtro, parcela = "Única" } = req.query;
+        let { data, filtro, parcela = "Única", nome } = req.query;
         if (!data) {
             data = getSimpleDate();
         }
@@ -133,7 +133,8 @@ class relatorioController {
             const response = await relatorioService.pegarResumoMensalDaEmpresa(
                 data,
                 filtro,
-                parcela
+                parcela,
+                nome
             );
 
             if (!response.successo) {
@@ -145,6 +146,7 @@ class relatorioController {
                 resumoMensal: response,
                 usuario_id: req.usuario.id_usuario,
                 successo: response.successo,
+                nome: nome
             });
         } catch (error) {
             console.error("Erro ao buscar relatório mensal   :", error);
