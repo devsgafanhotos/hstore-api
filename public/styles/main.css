@@ -261,14 +261,16 @@
             flex-flow: column;
             gap: 5px;
 
-            aside { 
+            aside {
                 display: flex;
                 justify-content: space-between;
                 max-width: 250px;
+
                 p {
                     font-size: 1.2em;
                     color: var(--roxoProfundo);
                 }
+
                 h3 {
                     color: var(--roxoProfundo);
                     font-weight: 400;
@@ -288,7 +290,6 @@
             text-align: right;
         }
     }
-
 
     .cash {
         width: 100%;
@@ -360,7 +361,6 @@
             display: flex;
             justify-content: center;
             align-items: center;
-
         }
 
         .numero-total {
@@ -369,6 +369,27 @@
             height: 25px;
             min-width: 40px;
             font-size: 1.2em;
+        }
+    }
+
+    #conteinerBtnPagarVarios {
+        text-align: right;
+        padding-top: 14px;
+        
+        label {
+            padding-right: 10px;
+        }
+        button#btnPagarVarios {
+            text-align: right;
+            background-color: var(--laranja);
+            cursor: pointer;
+            transition: ease-in-out .2s;
+            border: none;
+            border-radius: 5px;
+            padding: 8px 10px;
+
+            font-size: .8em;
+            font-weight: 400;
         }
     }
 

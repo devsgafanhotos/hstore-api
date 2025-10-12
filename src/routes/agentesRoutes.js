@@ -22,50 +22,35 @@ const agenteRoutes = express.Router();
  * @desc    Exibe o formulário de cadastro de agentes
  * @acesso  Autenticado
  */
-agenteRoutes.get(
-  "/cadastrar",
-  agentesController.cadastro
-);
+agenteRoutes.get("/cadastrar", agentesController.cadastro);
 
 /**
  * @route   POST /agentes/cadastrar
  * @desc    Cria um novo agente
  * @acesso  Autenticado
  */
-agenteRoutes.post(
-  "/cadastrar",
-  agentesController.criarAgentes
-);
+agenteRoutes.post("/cadastrar", agentesController.criarAgentes);
 
 /**
  * @route   GET /agentes/listar
  * @desc    Lista todos os agentes
  * @acesso  Autenticado
  */
-agenteRoutes.get(
-  "/",
-  agentesController.listarAgentes
-);
+agenteRoutes.get("/", agentesController.listarAgentes);
 
 /**
  * @route   GET /agentes/listar
  * @desc    Lista todos os agentes
  * @acesso  Autenticado
  */
-agenteRoutes.get(
-  "/ativos",
-  agentesController.listarAgentesAtivos
-);
+agenteRoutes.get("/ativos", agentesController.listarAgentesAtivos);
 
 /**
  * @route   GET /agentes/buscar/:id
  * @desc    Busca detalhes de um agente pelo ID
  * @acesso  Autenticado
-*/
-agenteRoutes.get(
-  "/perfil/:id",
-  agentesController.buscarAgentesPorId
-);
+ */
+agenteRoutes.get("/perfil/:id", agentesController.buscarAgentesPorId);
 
 /**
  * @route   GET /agentes/editar/:id
@@ -73,9 +58,9 @@ agenteRoutes.get(
  * @acesso  Autenticado
  */
 agenteRoutes.get(
-  "/editar/:id",
-  autenticacaoMiddleware.verificarAdmin,
-  agentesController.actualizarPage
+    "/editar/:id",
+    autenticacaoMiddleware.verificarAdmin,
+    agentesController.actualizarPage
 );
 
 /**
@@ -84,9 +69,9 @@ agenteRoutes.get(
  * @acesso  Autenticado
  */
 agenteRoutes.put(
-  "/editar",
-  autenticacaoMiddleware.verificarAdmin,
-  agentesController.atualizarAgente
+    "/editar",
+    autenticacaoMiddleware.verificarAdmin,
+    agentesController.atualizarAgente
 );
 
 /**
@@ -95,9 +80,9 @@ agenteRoutes.put(
  * @acesso  Autenticado
  */
 agenteRoutes.delete(
-  "/delete",
-  autenticacaoMiddleware.verificarAdmin,
-  agentesController.deletarAgente
+    "/delete",
+    autenticacaoMiddleware.verificarAdmin,
+    agentesController.deletarAgente
 );
 
 /**
@@ -105,45 +90,45 @@ agenteRoutes.delete(
  * @desc    Listar todas as vendas de um agente
  * @acesso  Autenticado
  */
-agenteRoutes.get(
-  "/faturacoes/:id",
-  agentesController.buscarFacturacoesAgentes
-);
-
+agenteRoutes.get("/faturacoes/:id", agentesController.buscarFacturacoesAgentes);
 
 /**
  * @route   PUT /alterarfaturacoes"
  * @acesso  Autenticado
  */
-agenteRoutes.put(
-  "/mudarformapagamento",
-  agentesController.mudarFormaPagamento
-);
-
-
-
-
+agenteRoutes.put("/mudarformapagamento", agentesController.mudarFormaPagamento);
 
 /**
  * @route   GET /agentes/relatorio/:id
  * @desc    Gera um relatório do agente de acordo as parcelas de pagaento do mesmo no mês
  * @acesso  Autenticado
-*/ 
+ */
 agenteRoutes.get(
-  "/relatorio/:id",
-  autenticacaoMiddleware.verificarAdmin,
-  agentesController.buscarRelatorioDeAgente
+    "/relatorio/:id",
+    autenticacaoMiddleware.verificarAdmin,
+    agentesController.buscarRelatorioDeAgente
 );
 
 /**
  * @route   GET /agentes/relatorio/:id
  * @desc    Relatórios de um agente
  * @acesso  Autenticado
-*/ 
+ */
 agenteRoutes.post(
-  "/relatorio/pagar",
-  autenticacaoMiddleware.verificarAdmin,
-  agentesController.criarRelatorioDoAgente
+    "/relatorio/pagar",
+    autenticacaoMiddleware.verificarAdmin,
+    agentesController.criarRelatorioDoAgente
+);
+
+/**
+ * @route   GET /agentes/relatorio/:id
+ * @desc    Relatórios de um agente
+ * @acesso  Autenticado
+ */
+agenteRoutes.post(
+    "/relatorio/pagarvarios",
+    autenticacaoMiddleware.verificarAdmin,
+    agentesController.pagarVariosAgentes
 );
 
 /**

@@ -139,10 +139,11 @@ class relatorioController {
             if (!response.successo) {
                 return res.redirect("/");
             }
-            
+
             res.render("pages/pagamento/pendentes", {
                 titulo: "Agentes não pagos",
                 resumoMensal: response,
+                usuario_id: req.usuario.id_usuario,
                 successo: response.successo,
             });
         } catch (error) {

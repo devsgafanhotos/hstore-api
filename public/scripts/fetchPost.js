@@ -2,105 +2,144 @@ const loaderContainer = document.getElementById("loaderContainer");
 
 const formLogin = document.querySelector(".main-page-form-login-usuario");
 if (formLogin) {
-	formLogin.addEventListener("submit", (event) => {
-		event.preventDefault();
+    formLogin.addEventListener("submit", (event) => {
+        event.preventDefault();
 
-		const formDate = new FormData(formLogin);
-		const bodyForm = Object.fromEntries(formDate.entries());
-		fetchPost("/usuarios/login", bodyForm, "/")
-	});
+        const formDate = new FormData(formLogin);
+        const bodyForm = Object.fromEntries(formDate.entries());
+        fetchPost("/usuarios/login", bodyForm, "/");
+    });
 }
 
 const formCadastroUsuario = document.querySelector(
-	".main-page-form-cadastro-usuario"
+    ".main-page-form-cadastro-usuario"
 );
 if (formCadastroUsuario) {
-	formCadastroUsuario.addEventListener("submit", (event) => {
-		event.preventDefault();
+    formCadastroUsuario.addEventListener("submit", (event) => {
+        event.preventDefault();
 
-		const formDate = new FormData(formCadastroUsuario);
-		const bodyForm = Object.fromEntries(formDate.entries());
-		fetchPost("/usuarios/cadastrar", bodyForm, "/usuarios")
-	});
+        const formDate = new FormData(formCadastroUsuario);
+        const bodyForm = Object.fromEntries(formDate.entries());
+        fetchPost("/usuarios/cadastrar", bodyForm, "/usuarios");
+    });
 }
 
 const formCadastroAgente = document.querySelector(
-	".main-page-form-cadastro-agente"
+    ".main-page-form-cadastro-agente"
 );
 if (formCadastroAgente) {
-	formCadastroAgente.addEventListener("submit", (event) => {
-		event.preventDefault();
+    formCadastroAgente.addEventListener("submit", (event) => {
+        event.preventDefault();
 
-		const formDate = new FormData(formCadastroAgente);
-		const bodyForm = Object.fromEntries(formDate.entries());
-		fetchPost("/agentes/cadastrar", bodyForm, "/agentes");
-	});
+        const formDate = new FormData(formCadastroAgente);
+        const bodyForm = Object.fromEntries(formDate.entries());
+        fetchPost("/agentes/cadastrar", bodyForm, "/agentes");
+    });
 }
 
 const formCadastroFaturacao = document.querySelector(
-	".main-page-form-cadastro-faturacao"
+    ".main-page-form-cadastro-faturacao"
 );
 if (formCadastroFaturacao) {
-	formCadastroFaturacao.addEventListener("submit", (event) => {
-		event.preventDefault();
+    formCadastroFaturacao.addEventListener("submit", (event) => {
+        event.preventDefault();
 
-		const formDate = new FormData(formCadastroFaturacao);
-		const bodyForm = Object.fromEntries(formDate.entries());
-		console.log(bodyForm);
+        const formDate = new FormData(formCadastroFaturacao);
+        const bodyForm = Object.fromEntries(formDate.entries());
+        console.log(bodyForm);
 
-		fetchPost(
-			"/faturacao/cadastrar",
-			bodyForm,
-			`/agentes/perfil/${bodyForm.agente_id}`
-		)
-	});
+        fetchPost(
+            "/faturacao/cadastrar",
+            bodyForm,
+            `/agentes/perfil/${bodyForm.agente_id}`
+        );
+    });
 }
 
-const formPagar = document.querySelectorAll(".form-pagar form");
+if (document.getElementById("pagarIndIvidual")) {
+    document.getElementById("pagarIndIvidual").addEventListener("submit", (event) => {
+        event.preventDefault();
+        const formDate = new FormData(event.target);
+        const bodyForm = Object.fromEntries(formDate.entries());
+
+        fetchPost(
+            "/agentes/relatorio/pagar",
+            bodyForm,
+            window.location.href
+        );
+    });
+}
+
+const formPagar = document.querySelectorAll(".form-pagar #pagarVaios");
 if (formPagar) {
-	formPagar.forEach((form) => {
-		form
-			.addEventListener("submit", (event) => {
-				event.preventDefault();
-				const formDate = new FormData(form);
-				const bodyForm = Object.fromEntries(formDate.entries());
-				fetchPost("/agentes/relatorio/pagar", bodyForm, window.location.href);
-			})
-	});
+    const pagamentos = [];
+
+    formPagar.forEach((form) => {
+        form.addEventListener("submit", (event) => {
+            event.preventDefault();
+            const formDate = new FormData(form);
+            const bodyForm = Object.fromEntries(formDate.entries());
+            pagamentos.push(bodyForm);
+
+            event.target.lastElementChild.style.backgroundColor = "#f7951e7a";
+            event.target.lastElementChild.setAttribute("disabled", true);
+
+            document.querySelector("#conteinerBtnPagarVarios label").innerHTML = pagamentos.length
+        });
+    });
+
+    document.querySelector("#conteinerBtnPagarVarios button").addEventListener("click", (event) => {
+        if (pagamentos.length > 0) {
+            event.target.style.backgroundColor = "#f7951e7a";
+            event.target.setAttribute("disabled", true);
+
+            fetchPost(
+                "/agentes/relatorio/pagarvarios",
+                pagamentos,
+                window.location.href
+            );
+        } else {
+            showAlert("Nenhum pagamento marcado!", true)
+            //showAlert("Nenhum pagamento marcado!", true);
+        }
+    });
 }
 
 async function fetchPost(url, body, newPage) {
     if (loaderContainer) {
         loaderContainer.style.display = "flex"; // Exibe o loader
     }
-    
-	const response = await fetch(url, {
-		method: "POST",
-		headers: { "Content-Type": "application/json" },
-		body: JSON.stringify(body),
-	});
-	const res = await response.json();
 
-	if (response.status > 299) {
+    const response = await fetch(url, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body),
+    });
+    const res = await response.json();
+
+    if (response.status > 299) {
         if (loaderContainer) {
             loaderContainer.style.display = "none"; // Esconde o loader após a resposta
         }
-		if (res.page) {
-			showAlert(res.msg, true);
-			return (window.location.href = res.page);
-		}
-		return showAlert(res.msg, true);
-	}
+        if (res.page) {
+            showAlert(res.msg, true);
+            return (window.location.href = res.page);
+        }
+        return showAlert(res.msg, true);
+    }
 
-	if (res.msg === "Logado") {
-		const usuario = res.usuario;
+    if (res.msg === "Logado") {
+        const usuario = res.usuario;
 
-		localStorage.setItem("idUsuario", usuario.id_usuario);
-		localStorage.setItem("nomeUsuario", usuario.nome);
-		localStorage.setItem("logoUsuario", usuario.nome[0].toLocaleUpperCase());
-		localStorage.setItem("tipoUsuario", usuario.tipo);
-		return (window.location.href = newPage);
-	}
+        localStorage.setItem("idUsuario", usuario.id_usuario);
+        localStorage.setItem("nomeUsuario", usuario.nome);
+        localStorage.setItem(
+            "logoUsuario",
+            usuario.nome[0].toLocaleUpperCase()
+        );
+        localStorage.setItem("tipoUsuario", usuario.tipo);
+        return (window.location.href = newPage);
+    }
 
     if (loaderContainer) {
         loaderContainer.style.display = "none"; // Esconde o loader após a resposta

@@ -198,16 +198,21 @@ class AgentesController {
      */
     buscarFacturacoesAgentes = async (req, res) => {
         const { id } = req.params;
-        let { data } = req.query;
+        let { data, dataFim } = req.query;
         if (!data) {
             data = getStringDate();
         }
-        data = new Date(data);
+
+        if (!dataFim) {
+            dataFim = getStringDate();
+        }
+
         try {
             const response =
-                await faturacaoService.pegarTodasFacturacoesDoAgente(id, data);
+                await faturacaoService.pegarTodasFacturacoesDoAgente(id, data, dataFim);
+
             const resumoMensalDoAgente =
-                await relatorioService.pegarResumoMensalDoAgente(id, data);
+                await relatorioService.pegarResumoMensalDoAgente(id, data, dataFim);
 
             if (!resumoMensalDoAgente.successo) {
                 res.redirect("/agentes");
@@ -218,6 +223,8 @@ class AgentesController {
                     titulo: "Histórico do Agente",
                     agente: response.agente,
                     msg: response.mensagem,
+                    dataFim: getStringDate(dataFim),
+                    data: getStringDate(data),
                     resumoMensalDoAgente: resumoMensalDoAgente,
                 });
             }
@@ -227,6 +234,8 @@ class AgentesController {
                 faturacoes: response.faturacoes,
                 agente: response.agente,
                 successo: response.successo,
+                dataFim: getStringDate(dataFim),
+                data: getStringDate(data),
                 resumoMensalDoAgente: resumoMensalDoAgente,
             });
         } catch (error) {
@@ -286,6 +295,7 @@ class AgentesController {
         try {
             const { id_usuario } = req.usuario;
             const dados = req.body;
+
             const response = await relatorioService.criarRelatorioFinalDoAgente(
                 id_usuario,
                 dados
@@ -296,6 +306,29 @@ class AgentesController {
                     .status(302)
                     .json({ msg: response.mensagem, page: response.page });
             }
+
+            if (!response.successo) {
+                return res.status(302).json({ msg: response.mensagem });
+            }
+
+            return res.status(200).json({ msg: response.mensagem });
+        } catch (error) {
+            console.error("Erro ao atualizar faturação:", error);
+            return res.status(500).json({ msg: response.mensagem });
+        }
+    };
+
+    /**
+     * @route POST /agentes/cadastrar
+     * @description Cria um novo agente com base nos dados recebidos do formulário.
+     * @access Privado (Autenticado)
+     */
+    pagarVariosAgentes = async (req, res) => {
+        try {
+            const { id_usuario } = req.usuario;
+            const dados = req.body;
+
+            const response = await relatorioService.pagarVariosAgentes(dados);
 
             if (!response.successo) {
                 return res.status(302).json({ msg: response.mensagem });

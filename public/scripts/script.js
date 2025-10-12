@@ -51,7 +51,6 @@ if (inputFormatado || valorReal) {
 
 
 function showAlert(msg, error = false) {
-    
     if (!error) {
         document.getElementById("showAlert").innerHTML = 
             `<p >${msg}</p>`;

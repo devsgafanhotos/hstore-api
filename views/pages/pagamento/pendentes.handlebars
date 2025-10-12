@@ -31,6 +31,10 @@
                 <button>Confirmar</button>
             </form>
         </section>
+        <div id="conteinerBtnPagarVarios">
+            <label>0</label>
+            <button id="btnPagarVarios">Registrar Marcados</button>
+        </div>
         <h2 class="main-page-lista-cabeçalho">Sub-agentes Não Pagos
             <a class="btn-plus numero-total">{{resumoMensal.agentesNaoPagos}}</a>
         </h2>
@@ -46,7 +50,6 @@
                             <p class="nome"> {{this.nome}}</p>
                             <h3>{{this.agente_id}}</h3>
                         </aside>
-
                         <div>
                             <p>Pagamento: {{this.forma_pagamento}} </p>
                             <p>Parcela:  {{this.parcela}} </p>
@@ -57,11 +60,14 @@
                 <div>
                     <h3 class="cash-pendente"> <span id="plus"> </span>{{getMoeda this.bonus}}</h3>
                     <div class="form-pagar">
-                        <form>
-                            <input type="number" name="id_agente" id="id_agente" value="{{this.agente_id}}">
-                            <input class="main-page-hero-form-busca-campo" type="month" name="data_relatorio" id="data-relatorio" value="{{../resumoMensal.data}}">
+                        <form id="pagarVaios">
+                            <input type="number" name="agente_id" id="agente_id" value="{{this.agente_id}}">
+                            <input type="number" name="usuario_id" id="usuario_id" value="{{../usuario_id}}">
+                            <input class="main-page-hero-form-busca-campo" type="month" name="data_correspondente" id="data_correspondente" value="{{../resumoMensal.data}}">
                             <input type="text" name="parcela" id="parcela" value="{{this.parcela}}">
-                            <button>Registrar Pagamento</button>
+                            <input type="text" name="resto" id="resto" value="{{this.resto}}">
+                            <input type="text" name="bonus" id="bonus" value="{{this.bonus}}">
+                            <button>Marcar</button>
                         </form>
                     </div>
                 </div>

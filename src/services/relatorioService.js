@@ -90,7 +90,7 @@ class relatorioService {
      * successo: boolean
      * }}}
      */
-    pegarResumoMensalDoAgente = async (id_agente, data) => {
+    pegarResumoMensalDoAgente = async (id_agente, data, dataFim) => {
         const agenteEncontrado = await agentes.findOne({
             raw: true,
             where: { id_agente: id_agente },
@@ -106,26 +106,33 @@ class relatorioService {
         if (!data) {
             data = new Date();
         }
-        const ano = new Date(data).getFullYear();
-        const mes = new Date(data).getMonth() + 1;
+
+        if (!dataFim) {
+            dataFim = new Date();
+        }
+        const dataIn = getStringDate(data);
+        const dataFi = getStringDate(dataFim);
 
         const comprasEfetuadas = await faturacoes.count({
             where: {
                 [Op.and]: [
-                    where(col("agente_id"), id_agente),
-                    where(fn("YEAR", col("data_faturacao")), ano),
-                    where(fn("MONTH", col("data_faturacao")), mes),
-                ],
+                        where(col("data_faturacao"), {
+                                    [Op.between]: [dataIn, dataFi,]
+                                }),
+                        where(col("agente_id"), id_agente),
+                    ],
             },
         });
+        
 
         let totalComprado = await faturacoes.sum("valor", {
             where: {
                 [Op.and]: [
-                    where(col("agente_id"), id_agente),
-                    where(fn("YEAR", col("data_faturacao")), ano),
-                    where(fn("MONTH", col("data_faturacao")), mes),
-                ],
+                        where(col("data_faturacao"), {
+                                    [Op.between]: [dataIn, dataFi,]
+                                }),
+                        where(col("agente_id"), id_agente),
+                    ],
             },
         });
         if (!totalComprado) {
@@ -258,7 +265,7 @@ class relatorioService {
             }
 
             if (!response.successo) {
-                return { successo: true, mensagem: response.mensagem };
+                return { successo: false, mensagem: response.mensagem };
             }
 
             const dadosPagamento = await this.pegarRelatorioDePagamentoDoAgente(
@@ -282,6 +289,36 @@ class relatorioService {
                     "Pagamento do Sub-agente " +
                     agenteEncontrado.nome +
                     " registrado!",
+            };
+        } catch (erro) {
+            console.error("Erro ao cadastrar faturação:", erro);
+            return {
+                successo: false,
+                mensagem: "Erro interno ao cadastrar faturação.",
+            };
+        }
+    };
+
+    /**
+     * Cria vários registros na tabela pagamentos
+     * @param { Number } usuario_id - ID do usuario que fez o registro
+     * @param { Object } dados - Dados do pagamento a ser registrado
+     * @returns {Object|{resumoFinalDoAgente: {
+     * ...resumoParcelarDoAgente: Object,
+     * mensagem: String,
+     * successo: Boolean
+     * }}}
+     * @dependence verificarPagamento();
+     * @dependence pegarRelatorioDePagamentoDoAgente();
+     */
+    pagarVariosAgentes = async (dados) => {
+        try {
+            const pagamentosRegistrados = await pagamento.bulkCreate(dados);
+            console.log(pagamentosRegistrados);
+
+            return {
+                successo: true,
+                mensagem: "Pagamentos dos Sub-agentes registrado com sucesso!",
             };
         } catch (erro) {
             console.error("Erro ao cadastrar faturação:", erro);
@@ -971,8 +1008,8 @@ class relatorioService {
 
         const listaFaturacoes = await faturacoes.findAll({
             attributes: [
-                [fn("count", col("agente_id")), "Total"],// quantidade de registros
-                [fn("SUM", col("valor")), "TotalVendido"],// soma do campo valor
+                [fn("count", col("agente_id")), "Total"], // quantidade de registros
+                [fn("SUM", col("valor")), "TotalVendido"], // soma do campo valor
                 "agente_id",
                 "forma_pagamento",
                 [col("agente.nome"), "agente.nome"],
@@ -996,12 +1033,16 @@ class relatorioService {
                     }),
                 ],
             },
-            group: ["agente_id", "forma_pagamento", "agente.nome", "agente.telefone"],
+            group: [
+                "agente_id",
+                "forma_pagamento",
+                "agente.nome",
+                "agente.telefone",
+            ],
             order: [[col("agente.nome"), "ASC"]],
             raw: true,
             nest: true,
         });
-
 
         let listaAgentesNaoPagos = [];
         let periodoFaturacao = true;
@@ -1033,7 +1074,7 @@ class relatorioService {
         if (periodoFaturacao) {
             for (const f of listaFaturacoes) {
                 if (
-                    !listaAgentesPagos.find(p => p.agente_id === f.agente_id)
+                    !listaAgentesPagos.find((p) => p.agente_id === f.agente_id)
                 ) {
                     try {
                         const bonus = this.calcularBonusAgente(f.TotalVendido);
@@ -1043,13 +1084,13 @@ class relatorioService {
                             parcela,
                             forma_pagamento: f.forma_pagamento,
                             bonus: bonus.bonus,
+                            resto: bonus.resto,
                         });
                         agentesNaoPagos++;
                     } catch (erro) {
                         console.error("Erro ao calcular soma:", erro);
                     }
                 }
-
             }
         }
 

@@ -1,7 +1,7 @@
 const { Op, fn, col, where, Sequelize } = require("sequelize");
 const db = require("../../config/database");
 const initModels = require("../models/init-models");
-const { getFullStringDate } = require("../utils");
+const { getFullStringDate, getSimpleDate, getStringDate } = require("../utils");
 const sequelize = db.sequelize;
 const models = initModels(sequelize);
 const faturacoes = models.faturacoes;
@@ -378,14 +378,17 @@ class FaturacaoService {
      * @param { Date } data - Data que desejamos filtrar as faturações, ano e mês
      * @returns { Object}
      */
-    pegarTodasFacturacoesDoAgente = async (agente_id, data) => {
+    pegarTodasFacturacoesDoAgente = async (agente_id, data, dataFim) => {
         try {
             if (!data) {
                 data = new Date();
             }
-
-            const ano = new Date(data).getFullYear();
-            const mes = new Date(data).getMonth() + 1;
+            
+            if (!dataFim) {
+                dataFim = new Date();
+            }
+            const dataIn = getStringDate(data);
+            const dataFi = getStringDate(dataFim);
 
             const agenteEncontrado = await agente.findOne({
                 raw: true,
@@ -398,14 +401,15 @@ class FaturacaoService {
                     mensagem: "Nenhum Sub-agente encontrado!",
                 };
             }
-
+            
             const faturacoesEncontradas = await faturacoes.findAll({
                 raw: true,
                 nest: true,
                 where: {
                     [Op.and]: [
-                        where(fn("YEAR", col("data_faturacao")), ano),
-                        where(fn("MONTH", col("data_faturacao")), mes),
+                        where(col("data_faturacao"), {
+                                    [Op.between]: [dataIn, dataFi,]
+                                }),
                         where(col("agente_id"), agente_id),
                     ],
                 },

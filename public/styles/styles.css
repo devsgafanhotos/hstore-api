@@ -141,10 +141,10 @@ body {
     }
 }
 
-
 .alertMsg {
-    position: absolute;
-    top: 4vh;
+    position: fixed;
+    z-index: 1000;
+    bottom: 8vh;
     right: 0px;
 
     max-width: 250px;
