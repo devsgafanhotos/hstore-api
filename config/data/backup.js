@@ -21,7 +21,7 @@ try {
     //  /usuarios/ativos
 
     const usuariosRegistrados = await modUsuarios.bulkCreate(usuarios);
-    console.log("usuarios: ", usuariosRegistrados);
+    console.log("uusuariosRegistrados com sucesso...!");
 } catch (error) {
     console.log("Erro ao cadastrar usuarios " + error);
 }
@@ -30,7 +30,7 @@ try {
     //  /agentes/ativos
 
     const agentesRegistrados = await modAgentes.bulkCreate(agentes);
-    console.log("agentes: ", agentesRegistrados);
+    console.log("agentesRegistrados com sucesso...!");
 } catch (error) {
     console.log("Erro ao cadastrar agentes " + error);
 }
@@ -39,7 +39,7 @@ try {
     //  /faturacao/all
 
     const facturacaoRegistrados = await modFaturacoes.bulkCreate(facturacao);
-    console.log("faturacoes: ", facturacaoRegistrados);
+    console.log("fatfacturacaoRegistrados com sucesso...!");
 } catch (error) {
     console.log("Erro ao cadastrar faturacao " + error);
 }
@@ -48,7 +48,7 @@ try {
     //  /pagamentos/all
 
     const pagamentosRegistrados = await modPagamentos.bulkCreate(pagamentos);
-    console.log("pagamentos: ", pagamentosRegistrados);
+    console.log("pagpagamentosRegistrados com sucesso...!");
 } catch (error) {
     console.log("Erro ao cadastrar relatorio/pagamentos " + error);
 }
