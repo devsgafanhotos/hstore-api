@@ -45,7 +45,7 @@ try {
 }
 
 try {
-    //  /relatorio/pagamentos/all
+    //  /pagamentos/all
 
     const pagamentosRegistrados = await modPagamentos.bulkCreate(pagamentos);
     console.log("pagamentos: ", pagamentosRegistrados);

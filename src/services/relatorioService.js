@@ -1124,7 +1124,7 @@ class relatorioService {
      */
     pegarTodosPagamentos = async () => {
         try {
-            const pagamentosEncontradas = await pagamentos.findAll({
+            const pagamentosEncontradas = await pagamento.findAll({
                 raw: true,
                 nest: true,
             });
@@ -1141,7 +1141,7 @@ class relatorioService {
                 mensagem: "Pagamentos encontrados!",
             };
         } catch (error) {
-            console.log("\nErro ao buscar pagamentos..." + error);
+            console.log("\nErro ao buscar pagamentos... " + error);
             return { successo: false, mensagem: "Erro ao renderizar home!" };
         }
     };
