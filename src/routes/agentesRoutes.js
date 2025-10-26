@@ -39,7 +39,7 @@ agenteRoutes.post("/cadastrar", agentesController.criarAgentes);
 agenteRoutes.get("/", agentesController.listarAgentes);
 
 /**
- * @route   GET /agentes/listar
+ * @route   GET /agentes/ativos
  * @desc    Lista todos os agentes
  * @acesso  Autenticado
  */

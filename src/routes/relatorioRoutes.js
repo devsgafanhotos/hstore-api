@@ -86,5 +86,18 @@ relatorioRoutes.get(
   relatorioController.buscarAgentesNaoPagos
 );
 
+/**
+ * @route GET /relatorio/agentespagos
+ * @returns {Object} 200 - Lista de faturas
+ * @returns {Error} 401 - Não autorizado
+ * @description Listar os agentes já pagos em determinado periodo
+ * @access Privado (Autenticado)
+ */
+relatorioRoutes.get(
+  "/pagamentos/all",
+  autenticacaoMiddleware.verificarAutenticacao,
+  relatorioController.buscarTodosPagamentos
+);
+
 // Exporta o roteador
 module.exports = { relatorioRoutes };

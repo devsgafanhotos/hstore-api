@@ -1,5 +1,4 @@
-{
-    "usuarios": [
+export const usuarios = [
         {
             "id_usuario": 2,
             "nome": "Altino Sebastiao",
@@ -34,4 +33,3 @@
             "estado": "Ativo"
         }
     ]
-}

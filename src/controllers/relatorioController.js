@@ -155,6 +155,19 @@ class relatorioController {
             });
         }
     };
+
+    buscarTodosPagamentos = async (req, res) => {
+        try {
+            const response = await relatorioService.pegarTodosPagamentos();
+
+            res.status(200).json({ pagamentos: response.pagamentos });
+        } catch (error) {
+            console.error("Erro ao listar pagamentos:", error);
+            res.render("pages/error", {
+                titulo: "Internal error",
+            });
+        }
+    };
 }
 
 module.exports = relatorioController;

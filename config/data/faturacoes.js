@@ -1,5 +1,37 @@
-{
-    "facturacao": [
+export const facturacao = [
+        {
+            "id_facturacao": 1326,
+            "valor": 25000,
+            "data_faturacao": "2025-10-12  12:51",
+            "ultima_actualizacao": "2025-10-12T12:51:46.000Z",
+            "estado": "Pendente",
+            "tipo_faturacao": "Electrônico",
+            "forma_pagamento": "Mensal",
+            "agente_id": 612195,
+            "usuario_id": 2
+        },
+        {
+            "id_facturacao": 1327,
+            "valor": 1000,
+            "data_faturacao": "2025-10-12  12:51",
+            "ultima_actualizacao": "2025-10-12T12:51:46.000Z",
+            "estado": "Pendente",
+            "tipo_faturacao": "Físico",
+            "forma_pagamento": "Mensal",
+            "agente_id": 612195,
+            "usuario_id": 2
+        },
+        {
+            "id_facturacao": 1325,
+            "valor": 25000,
+            "data_faturacao": "2025-10-06  01:32",
+            "ultima_actualizacao": "2025-10-06T01:32:54.000Z",
+            "estado": "Pendente",
+            "tipo_faturacao": "Electrônico",
+            "forma_pagamento": "Mensal",
+            "agente_id": 656227,
+            "usuario_id": 1
+        },
         {
             "id_facturacao": 1324,
             "valor": 21000,
@@ -210,17 +242,6 @@
             "usuario_id": 1
         },
         {
-            "id_facturacao": 1305,
-            "valor": 12000,
-            "data_faturacao": "2025-09-28  10:45",
-            "ultima_actualizacao": "2025-09-28T10:45:42.000Z",
-            "estado": "Pendente",
-            "tipo_faturacao": "Electrônico",
-            "forma_pagamento": "Quinzenal",
-            "agente_id": 658930,
-            "usuario_id": 1
-        },
-        {
             "id_facturacao": 1304,
             "valor": 35000,
             "data_faturacao": "2025-09-28  10:45",
@@ -229,6 +250,17 @@
             "tipo_faturacao": "Electrônico",
             "forma_pagamento": "Quinzenal",
             "agente_id": 649572,
+            "usuario_id": 1
+        },
+        {
+            "id_facturacao": 1305,
+            "valor": 12000,
+            "data_faturacao": "2025-09-28  10:45",
+            "ultima_actualizacao": "2025-09-28T10:45:42.000Z",
+            "estado": "Pendente",
+            "tipo_faturacao": "Electrônico",
+            "forma_pagamento": "Quinzenal",
+            "agente_id": 658930,
             "usuario_id": 1
         },
         {
@@ -364,6 +396,17 @@
             "usuario_id": 1
         },
         {
+            "id_facturacao": 1288,
+            "valor": 9000,
+            "data_faturacao": "2025-09-28  09:43",
+            "ultima_actualizacao": "2025-09-28T09:43:03.000Z",
+            "estado": "Pendente",
+            "tipo_faturacao": "Electrônico",
+            "forma_pagamento": "Quinzenal",
+            "agente_id": 600734,
+            "usuario_id": 1
+        },
+        {
             "id_facturacao": 1289,
             "valor": 11000,
             "data_faturacao": "2025-09-28  09:43",
@@ -383,17 +426,6 @@
             "tipo_faturacao": "Físico",
             "forma_pagamento": "Quinzenal",
             "agente_id": 579476,
-            "usuario_id": 1
-        },
-        {
-            "id_facturacao": 1288,
-            "valor": 9000,
-            "data_faturacao": "2025-09-28  09:43",
-            "ultima_actualizacao": "2025-09-28T09:43:03.000Z",
-            "estado": "Pendente",
-            "tipo_faturacao": "Electrônico",
-            "forma_pagamento": "Quinzenal",
-            "agente_id": 600734,
             "usuario_id": 1
         },
         {
@@ -705,17 +737,6 @@
             "usuario_id": 1
         },
         {
-            "id_facturacao": 1258,
-            "valor": 25000,
-            "data_faturacao": "2025-09-28  07:47",
-            "ultima_actualizacao": "2025-09-28T07:47:06.000Z",
-            "estado": "Pendente",
-            "tipo_faturacao": "Electrônico",
-            "forma_pagamento": "Quinzenal",
-            "agente_id": 614029,
-            "usuario_id": 1
-        },
-        {
             "id_facturacao": 1259,
             "valor": 19000,
             "data_faturacao": "2025-09-28  07:47",
@@ -991,17 +1012,6 @@
             "usuario_id": 1
         },
         {
-            "id_facturacao": 1232,
-            "valor": 4500,
-            "data_faturacao": "2025-09-27  14:50",
-            "ultima_actualizacao": "2025-09-27T14:50:59.000Z",
-            "estado": "Pendente",
-            "tipo_faturacao": "Físico",
-            "forma_pagamento": "Quinzenal",
-            "agente_id": 654204,
-            "usuario_id": 1
-        },
-        {
             "id_facturacao": 1231,
             "valor": 5000,
             "data_faturacao": "2025-09-27  14:50",
@@ -1010,6 +1020,17 @@
             "tipo_faturacao": "Físico",
             "forma_pagamento": "Quinzenal",
             "agente_id": 622937,
+            "usuario_id": 1
+        },
+        {
+            "id_facturacao": 1232,
+            "valor": 4500,
+            "data_faturacao": "2025-09-27  14:50",
+            "ultima_actualizacao": "2025-09-27T14:50:59.000Z",
+            "estado": "Pendente",
+            "tipo_faturacao": "Físico",
+            "forma_pagamento": "Quinzenal",
+            "agente_id": 654204,
             "usuario_id": 1
         },
         {
@@ -1233,17 +1254,6 @@
             "usuario_id": 1
         },
         {
-            "id_facturacao": 1210,
-            "valor": 8500,
-            "data_faturacao": "2025-09-27  12:59",
-            "ultima_actualizacao": "2025-09-27T12:59:58.000Z",
-            "estado": "Pendente",
-            "tipo_faturacao": "Físico",
-            "forma_pagamento": "Quinzenal",
-            "agente_id": 660885,
-            "usuario_id": 1
-        },
-        {
             "id_facturacao": 1209,
             "valor": 10000,
             "data_faturacao": "2025-09-27  12:59",
@@ -1252,6 +1262,17 @@
             "tipo_faturacao": "Electrônico",
             "forma_pagamento": "Quinzenal",
             "agente_id": 600736,
+            "usuario_id": 1
+        },
+        {
+            "id_facturacao": 1210,
+            "valor": 8500,
+            "data_faturacao": "2025-09-27  12:59",
+            "ultima_actualizacao": "2025-09-27T12:59:58.000Z",
+            "estado": "Pendente",
+            "tipo_faturacao": "Físico",
+            "forma_pagamento": "Quinzenal",
+            "agente_id": 660885,
             "usuario_id": 1
         },
         {
@@ -1750,6 +1771,17 @@
             "usuario_id": 1
         },
         {
+            "id_facturacao": 1157,
+            "valor": 13500,
+            "data_faturacao": "2025-09-27  09:01",
+            "ultima_actualizacao": "2025-09-27T09:01:15.000Z",
+            "estado": "Pendente",
+            "tipo_faturacao": "Físico",
+            "forma_pagamento": "Quinzenal",
+            "agente_id": 612183,
+            "usuario_id": 1
+        },
+        {
             "id_facturacao": 1158,
             "valor": 5000,
             "data_faturacao": "2025-09-27  09:01",
@@ -1769,17 +1801,6 @@
             "tipo_faturacao": "Físico",
             "forma_pagamento": "Quinzenal",
             "agente_id": 588234,
-            "usuario_id": 1
-        },
-        {
-            "id_facturacao": 1157,
-            "valor": 13500,
-            "data_faturacao": "2025-09-27  09:01",
-            "ultima_actualizacao": "2025-09-27T09:01:15.000Z",
-            "estado": "Pendente",
-            "tipo_faturacao": "Físico",
-            "forma_pagamento": "Quinzenal",
-            "agente_id": 612183,
             "usuario_id": 1
         },
         {
@@ -2542,17 +2563,6 @@
             "usuario_id": 1
         },
         {
-            "id_facturacao": 1086,
-            "valor": 4000,
-            "data_faturacao": "2025-09-26  13:37",
-            "ultima_actualizacao": "2025-09-26T13:37:49.000Z",
-            "estado": "Pendente",
-            "tipo_faturacao": "Físico",
-            "forma_pagamento": "Quinzenal",
-            "agente_id": 661419,
-            "usuario_id": 1
-        },
-        {
             "id_facturacao": 1085,
             "valor": 13000,
             "data_faturacao": "2025-09-26  13:37",
@@ -2561,6 +2571,17 @@
             "tipo_faturacao": "Electrônico",
             "forma_pagamento": "Quinzenal",
             "agente_id": 697161,
+            "usuario_id": 1
+        },
+        {
+            "id_facturacao": 1086,
+            "valor": 4000,
+            "data_faturacao": "2025-09-26  13:37",
+            "ultima_actualizacao": "2025-09-26T13:37:49.000Z",
+            "estado": "Pendente",
+            "tipo_faturacao": "Físico",
+            "forma_pagamento": "Quinzenal",
+            "agente_id": 661419,
             "usuario_id": 1
         },
         {
@@ -2773,17 +2794,6 @@
             "usuario_id": 1
         },
         {
-            "id_facturacao": 1063,
-            "valor": 5000,
-            "data_faturacao": "2025-09-26  12:28",
-            "ultima_actualizacao": "2025-09-26T12:28:49.000Z",
-            "estado": "Pendente",
-            "tipo_faturacao": "Físico",
-            "forma_pagamento": "Quinzenal",
-            "agente_id": 662841,
-            "usuario_id": 1
-        },
-        {
             "id_facturacao": 1062,
             "valor": 25000,
             "data_faturacao": "2025-09-26  12:28",
@@ -2795,14 +2805,14 @@
             "usuario_id": 1
         },
         {
-            "id_facturacao": 1061,
-            "valor": 15000,
-            "data_faturacao": "2025-09-26  12:26",
-            "ultima_actualizacao": "2025-09-26T12:26:31.000Z",
+            "id_facturacao": 1063,
+            "valor": 5000,
+            "data_faturacao": "2025-09-26  12:28",
+            "ultima_actualizacao": "2025-09-26T12:28:49.000Z",
             "estado": "Pendente",
-            "tipo_faturacao": "Electrônico",
+            "tipo_faturacao": "Físico",
             "forma_pagamento": "Quinzenal",
-            "agente_id": 697917,
+            "agente_id": 662841,
             "usuario_id": 1
         },
         {
@@ -2814,6 +2824,17 @@
             "tipo_faturacao": "Electrônico",
             "forma_pagamento": "Quinzenal",
             "agente_id": 656472,
+            "usuario_id": 1
+        },
+        {
+            "id_facturacao": 1061,
+            "valor": 15000,
+            "data_faturacao": "2025-09-26  12:26",
+            "ultima_actualizacao": "2025-09-26T12:26:31.000Z",
+            "estado": "Pendente",
+            "tipo_faturacao": "Electrônico",
+            "forma_pagamento": "Quinzenal",
+            "agente_id": 697917,
             "usuario_id": 1
         },
         {
@@ -2839,17 +2860,6 @@
             "usuario_id": 1
         },
         {
-            "id_facturacao": 1056,
-            "valor": 6000,
-            "data_faturacao": "2025-09-26  12:10",
-            "ultima_actualizacao": "2025-09-26T12:10:59.000Z",
-            "estado": "Pendente",
-            "tipo_faturacao": "Físico",
-            "forma_pagamento": "Quinzenal",
-            "agente_id": 634191,
-            "usuario_id": 1
-        },
-        {
             "id_facturacao": 1054,
             "valor": 12500,
             "data_faturacao": "2025-09-26  12:10",
@@ -2869,6 +2879,17 @@
             "tipo_faturacao": "Físico",
             "forma_pagamento": "Quinzenal",
             "agente_id": 697923,
+            "usuario_id": 1
+        },
+        {
+            "id_facturacao": 1056,
+            "valor": 6000,
+            "data_faturacao": "2025-09-26  12:10",
+            "ultima_actualizacao": "2025-09-26T12:10:59.000Z",
+            "estado": "Pendente",
+            "tipo_faturacao": "Físico",
+            "forma_pagamento": "Quinzenal",
+            "agente_id": 634191,
             "usuario_id": 1
         },
         {
@@ -2905,6 +2926,17 @@
             "usuario_id": 1
         },
         {
+            "id_facturacao": 1048,
+            "valor": 15000,
+            "data_faturacao": "2025-09-26  11:45",
+            "ultima_actualizacao": "2025-09-26T11:45:04.000Z",
+            "estado": "Pendente",
+            "tipo_faturacao": "Electrônico",
+            "forma_pagamento": "Mensal",
+            "agente_id": 696445,
+            "usuario_id": 1
+        },
+        {
             "id_facturacao": 1049,
             "valor": 11500,
             "data_faturacao": "2025-09-26  11:45",
@@ -2927,17 +2959,6 @@
             "usuario_id": 1
         },
         {
-            "id_facturacao": 1048,
-            "valor": 15000,
-            "data_faturacao": "2025-09-26  11:45",
-            "ultima_actualizacao": "2025-09-26T11:45:04.000Z",
-            "estado": "Pendente",
-            "tipo_faturacao": "Electrônico",
-            "forma_pagamento": "Mensal",
-            "agente_id": 696445,
-            "usuario_id": 1
-        },
-        {
             "id_facturacao": 1047,
             "valor": 14000,
             "data_faturacao": "2025-09-26  11:44",
@@ -2949,14 +2970,14 @@
             "usuario_id": 1
         },
         {
-            "id_facturacao": 1046,
-            "valor": 6000,
+            "id_facturacao": 1043,
+            "valor": 20000,
             "data_faturacao": "2025-09-26  11:43",
-            "ultima_actualizacao": "2025-09-26T11:43:57.000Z",
+            "ultima_actualizacao": "2025-09-26T11:43:01.000Z",
             "estado": "Pendente",
             "tipo_faturacao": "Electrônico",
             "forma_pagamento": "Quinzenal",
-            "agente_id": 540935,
+            "agente_id": 696769,
             "usuario_id": 1
         },
         {
@@ -2982,14 +3003,14 @@
             "usuario_id": 1
         },
         {
-            "id_facturacao": 1043,
-            "valor": 20000,
+            "id_facturacao": 1046,
+            "valor": 6000,
             "data_faturacao": "2025-09-26  11:43",
-            "ultima_actualizacao": "2025-09-26T11:43:01.000Z",
+            "ultima_actualizacao": "2025-09-26T11:43:57.000Z",
             "estado": "Pendente",
             "tipo_faturacao": "Electrônico",
             "forma_pagamento": "Quinzenal",
-            "agente_id": 696769,
+            "agente_id": 540935,
             "usuario_id": 1
         },
         {
@@ -3004,17 +3025,6 @@
             "usuario_id": 1
         },
         {
-            "id_facturacao": 1041,
-            "valor": 14000,
-            "data_faturacao": "2025-09-26  11:38",
-            "ultima_actualizacao": "2025-09-26T11:38:40.000Z",
-            "estado": "Pendente",
-            "tipo_faturacao": "Físico",
-            "forma_pagamento": "Quinzenal",
-            "agente_id": 696636,
-            "usuario_id": 1
-        },
-        {
             "id_facturacao": 1040,
             "valor": 7000,
             "data_faturacao": "2025-09-26  11:38",
@@ -3023,6 +3033,17 @@
             "tipo_faturacao": "Físico",
             "forma_pagamento": "Quinzenal",
             "agente_id": 639312,
+            "usuario_id": 1
+        },
+        {
+            "id_facturacao": 1041,
+            "valor": 14000,
+            "data_faturacao": "2025-09-26  11:38",
+            "ultima_actualizacao": "2025-09-26T11:38:40.000Z",
+            "estado": "Pendente",
+            "tipo_faturacao": "Físico",
+            "forma_pagamento": "Quinzenal",
+            "agente_id": 696636,
             "usuario_id": 1
         },
         {
@@ -3081,6 +3102,17 @@
             "usuario_id": 1
         },
         {
+            "id_facturacao": 1032,
+            "valor": 18500,
+            "data_faturacao": "2025-09-26  11:31",
+            "ultima_actualizacao": "2025-09-26T11:31:02.000Z",
+            "estado": "Pendente",
+            "tipo_faturacao": "Electrônico",
+            "forma_pagamento": "Mensal",
+            "agente_id": 688187,
+            "usuario_id": 1
+        },
+        {
             "id_facturacao": 1033,
             "valor": 2000,
             "data_faturacao": "2025-09-26  11:31",
@@ -3103,17 +3135,6 @@
             "usuario_id": 1
         },
         {
-            "id_facturacao": 1032,
-            "valor": 18500,
-            "data_faturacao": "2025-09-26  11:31",
-            "ultima_actualizacao": "2025-09-26T11:31:02.000Z",
-            "estado": "Pendente",
-            "tipo_faturacao": "Electrônico",
-            "forma_pagamento": "Mensal",
-            "agente_id": 688187,
-            "usuario_id": 1
-        },
-        {
             "id_facturacao": 1031,
             "valor": 12000,
             "data_faturacao": "2025-09-26  11:28",
@@ -3122,6 +3143,17 @@
             "tipo_faturacao": "Físico",
             "forma_pagamento": "Quinzenal",
             "agente_id": 670946,
+            "usuario_id": 1
+        },
+        {
+            "id_facturacao": 1028,
+            "valor": 4000,
+            "data_faturacao": "2025-09-26  11:27",
+            "ultima_actualizacao": "2025-09-26T11:27:04.000Z",
+            "estado": "Pendente",
+            "tipo_faturacao": "Electrônico",
+            "forma_pagamento": "Quinzenal",
+            "agente_id": 695785,
             "usuario_id": 1
         },
         {
@@ -3147,21 +3179,10 @@
             "usuario_id": 1
         },
         {
-            "id_facturacao": 1028,
-            "valor": 4000,
-            "data_faturacao": "2025-09-26  11:27",
-            "ultima_actualizacao": "2025-09-26T11:27:04.000Z",
-            "estado": "Pendente",
-            "tipo_faturacao": "Electrônico",
-            "forma_pagamento": "Quinzenal",
-            "agente_id": 695785,
-            "usuario_id": 1
-        },
-        {
-            "id_facturacao": 1027,
+            "id_facturacao": 1026,
             "valor": 11000,
             "data_faturacao": "2025-09-26  11:26",
-            "ultima_actualizacao": "2025-09-26T11:26:31.000Z",
+            "ultima_actualizacao": "2025-09-26T11:26:23.000Z",
             "estado": "Pendente",
             "tipo_faturacao": "Electrônico",
             "forma_pagamento": "Quinzenal",
@@ -3169,10 +3190,10 @@
             "usuario_id": 1
         },
         {
-            "id_facturacao": 1026,
+            "id_facturacao": 1027,
             "valor": 11000,
             "data_faturacao": "2025-09-26  11:26",
-            "ultima_actualizacao": "2025-09-26T11:26:23.000Z",
+            "ultima_actualizacao": "2025-09-26T11:26:31.000Z",
             "estado": "Pendente",
             "tipo_faturacao": "Electrônico",
             "forma_pagamento": "Quinzenal",
@@ -3224,17 +3245,6 @@
             "usuario_id": 1
         },
         {
-            "id_facturacao": 1021,
-            "valor": 3500,
-            "data_faturacao": "2025-09-26  11:21",
-            "ultima_actualizacao": "2025-09-26T11:21:37.000Z",
-            "estado": "Pendente",
-            "tipo_faturacao": "Electrônico",
-            "forma_pagamento": "Quinzenal",
-            "agente_id": 613524,
-            "usuario_id": 1
-        },
-        {
             "id_facturacao": 1019,
             "valor": 7000,
             "data_faturacao": "2025-09-26  11:21",
@@ -3254,6 +3264,17 @@
             "tipo_faturacao": "Físico",
             "forma_pagamento": "Quinzenal",
             "agente_id": 695796,
+            "usuario_id": 1
+        },
+        {
+            "id_facturacao": 1021,
+            "valor": 3500,
+            "data_faturacao": "2025-09-26  11:21",
+            "ultima_actualizacao": "2025-09-26T11:21:37.000Z",
+            "estado": "Pendente",
+            "tipo_faturacao": "Electrônico",
+            "forma_pagamento": "Quinzenal",
+            "agente_id": 613524,
             "usuario_id": 1
         },
         {
@@ -3389,17 +3410,6 @@
             "usuario_id": 1
         },
         {
-            "id_facturacao": 1006,
-            "valor": 6500,
-            "data_faturacao": "2025-09-26  11:11",
-            "ultima_actualizacao": "2025-09-26T11:11:59.000Z",
-            "estado": "Pendente",
-            "tipo_faturacao": "Físico",
-            "forma_pagamento": "Quinzenal",
-            "agente_id": 680092,
-            "usuario_id": 1
-        },
-        {
             "id_facturacao": 1005,
             "valor": 4000,
             "data_faturacao": "2025-09-26  11:11",
@@ -3408,6 +3418,17 @@
             "tipo_faturacao": "Físico",
             "forma_pagamento": "Quinzenal",
             "agente_id": 654204,
+            "usuario_id": 1
+        },
+        {
+            "id_facturacao": 1006,
+            "valor": 6500,
+            "data_faturacao": "2025-09-26  11:11",
+            "ultima_actualizacao": "2025-09-26T11:11:59.000Z",
+            "estado": "Pendente",
+            "tipo_faturacao": "Físico",
+            "forma_pagamento": "Quinzenal",
+            "agente_id": 680092,
             "usuario_id": 1
         },
         {
@@ -3686,17 +3707,6 @@
             "usuario_id": 1
         },
         {
-            "id_facturacao": 977,
-            "valor": 5500,
-            "data_faturacao": "2025-09-25  15:52",
-            "ultima_actualizacao": "2025-09-25T15:52:50.000Z",
-            "estado": "Pendente",
-            "tipo_faturacao": "Electrônico",
-            "forma_pagamento": "Quinzenal",
-            "agente_id": 666140,
-            "usuario_id": 1
-        },
-        {
             "id_facturacao": 976,
             "valor": 6500,
             "data_faturacao": "2025-09-25  15:52",
@@ -3705,6 +3715,17 @@
             "tipo_faturacao": "Electrônico",
             "forma_pagamento": "Quinzenal",
             "agente_id": 680095,
+            "usuario_id": 1
+        },
+        {
+            "id_facturacao": 977,
+            "valor": 5500,
+            "data_faturacao": "2025-09-25  15:52",
+            "ultima_actualizacao": "2025-09-25T15:52:50.000Z",
+            "estado": "Pendente",
+            "tipo_faturacao": "Electrônico",
+            "forma_pagamento": "Quinzenal",
+            "agente_id": 666140,
             "usuario_id": 1
         },
         {
@@ -3719,17 +3740,6 @@
             "usuario_id": 1
         },
         {
-            "id_facturacao": 974,
-            "valor": 18500,
-            "data_faturacao": "2025-09-25  15:50",
-            "ultima_actualizacao": "2025-09-25T15:50:53.000Z",
-            "estado": "Pendente",
-            "tipo_faturacao": "Electrônico",
-            "forma_pagamento": "Quinzenal",
-            "agente_id": 636864,
-            "usuario_id": 1
-        },
-        {
             "id_facturacao": 973,
             "valor": 1500,
             "data_faturacao": "2025-09-25  15:50",
@@ -3738,6 +3748,17 @@
             "tipo_faturacao": "Electrônico",
             "forma_pagamento": "Quinzenal",
             "agente_id": 548729,
+            "usuario_id": 1
+        },
+        {
+            "id_facturacao": 974,
+            "valor": 18500,
+            "data_faturacao": "2025-09-25  15:50",
+            "ultima_actualizacao": "2025-09-25T15:50:53.000Z",
+            "estado": "Pendente",
+            "tipo_faturacao": "Electrônico",
+            "forma_pagamento": "Quinzenal",
+            "agente_id": 636864,
             "usuario_id": 1
         },
         {
@@ -3785,17 +3806,6 @@
             "usuario_id": 1
         },
         {
-            "id_facturacao": 968,
-            "valor": 10500,
-            "data_faturacao": "2025-09-25  15:40",
-            "ultima_actualizacao": "2025-09-25T15:40:46.000Z",
-            "estado": "Pendente",
-            "tipo_faturacao": "Físico",
-            "forma_pagamento": "Quinzenal",
-            "agente_id": 615747,
-            "usuario_id": 1
-        },
-        {
             "id_facturacao": 967,
             "valor": 18000,
             "data_faturacao": "2025-09-25  15:40",
@@ -3804,6 +3814,17 @@
             "tipo_faturacao": "Electrônico",
             "forma_pagamento": "Quinzenal",
             "agente_id": 567285,
+            "usuario_id": 1
+        },
+        {
+            "id_facturacao": 968,
+            "valor": 10500,
+            "data_faturacao": "2025-09-25  15:40",
+            "ultima_actualizacao": "2025-09-25T15:40:46.000Z",
+            "estado": "Pendente",
+            "tipo_faturacao": "Físico",
+            "forma_pagamento": "Quinzenal",
+            "agente_id": 615747,
             "usuario_id": 1
         },
         {
@@ -3939,10 +3960,10 @@
             "usuario_id": 1
         },
         {
-            "id_facturacao": 954,
-            "valor": 30000,
+            "id_facturacao": 953,
+            "valor": 20000,
             "data_faturacao": "2025-09-25  15:16",
-            "ultima_actualizacao": "2025-09-25T15:16:58.000Z",
+            "ultima_actualizacao": "2025-09-25T15:16:33.000Z",
             "estado": "Pendente",
             "tipo_faturacao": "Electrônico",
             "forma_pagamento": "Mensal",
@@ -3950,10 +3971,10 @@
             "usuario_id": 1
         },
         {
-            "id_facturacao": 953,
-            "valor": 20000,
+            "id_facturacao": 954,
+            "valor": 30000,
             "data_faturacao": "2025-09-25  15:16",
-            "ultima_actualizacao": "2025-09-25T15:16:33.000Z",
+            "ultima_actualizacao": "2025-09-25T15:16:58.000Z",
             "estado": "Pendente",
             "tipo_faturacao": "Electrônico",
             "forma_pagamento": "Mensal",
@@ -4093,10 +4114,10 @@
             "usuario_id": 1
         },
         {
-            "id_facturacao": 940,
-            "valor": 5000,
+            "id_facturacao": 939,
+            "valor": 7500,
             "data_faturacao": "2025-09-25  14:47",
-            "ultima_actualizacao": "2025-09-25T14:47:53.000Z",
+            "ultima_actualizacao": "2025-09-25T14:47:43.000Z",
             "estado": "Pendente",
             "tipo_faturacao": "Electrônico",
             "forma_pagamento": "Quinzenal",
@@ -4104,10 +4125,10 @@
             "usuario_id": 1
         },
         {
-            "id_facturacao": 939,
-            "valor": 7500,
+            "id_facturacao": 940,
+            "valor": 5000,
             "data_faturacao": "2025-09-25  14:47",
-            "ultima_actualizacao": "2025-09-25T14:47:43.000Z",
+            "ultima_actualizacao": "2025-09-25T14:47:53.000Z",
             "estado": "Pendente",
             "tipo_faturacao": "Electrônico",
             "forma_pagamento": "Quinzenal",
@@ -4159,10 +4180,10 @@
             "usuario_id": 1
         },
         {
-            "id_facturacao": 934,
-            "valor": 4000,
+            "id_facturacao": 933,
+            "valor": 6000,
             "data_faturacao": "2025-09-25  14:25",
-            "ultima_actualizacao": "2025-09-25T14:25:33.000Z",
+            "ultima_actualizacao": "2025-09-25T14:25:01.000Z",
             "estado": "Pendente",
             "tipo_faturacao": "Físico",
             "forma_pagamento": "Quinzenal",
@@ -4170,10 +4191,10 @@
             "usuario_id": 1
         },
         {
-            "id_facturacao": 933,
-            "valor": 6000,
+            "id_facturacao": 934,
+            "valor": 4000,
             "data_faturacao": "2025-09-25  14:25",
-            "ultima_actualizacao": "2025-09-25T14:25:01.000Z",
+            "ultima_actualizacao": "2025-09-25T14:25:33.000Z",
             "estado": "Pendente",
             "tipo_faturacao": "Físico",
             "forma_pagamento": "Quinzenal",
@@ -4775,17 +4796,6 @@
             "usuario_id": 1
         },
         {
-            "id_facturacao": 881,
-            "valor": 7000,
-            "data_faturacao": "2025-09-24  15:06",
-            "ultima_actualizacao": "2025-09-24T15:06:48.000Z",
-            "estado": "Pendente",
-            "tipo_faturacao": "Electrônico",
-            "forma_pagamento": "Quinzenal",
-            "agente_id": 680092,
-            "usuario_id": 1
-        },
-        {
             "id_facturacao": 880,
             "valor": 25000,
             "data_faturacao": "2025-09-24  15:06",
@@ -4794,6 +4804,17 @@
             "tipo_faturacao": "Electrônico",
             "forma_pagamento": "Quinzenal",
             "agente_id": 630238,
+            "usuario_id": 1
+        },
+        {
+            "id_facturacao": 881,
+            "valor": 7000,
+            "data_faturacao": "2025-09-24  15:06",
+            "ultima_actualizacao": "2025-09-24T15:06:48.000Z",
+            "estado": "Pendente",
+            "tipo_faturacao": "Electrônico",
+            "forma_pagamento": "Quinzenal",
+            "agente_id": 680092,
             "usuario_id": 1
         },
         {
@@ -5237,6 +5258,17 @@
             "usuario_id": 1
         },
         {
+            "id_facturacao": 838,
+            "valor": 13000,
+            "data_faturacao": "2025-09-24  11:37",
+            "ultima_actualizacao": "2025-09-24T11:37:37.000Z",
+            "estado": "Pendente",
+            "tipo_faturacao": "Electrônico",
+            "forma_pagamento": "Quinzenal",
+            "agente_id": 696246,
+            "usuario_id": 1
+        },
+        {
             "id_facturacao": 839,
             "valor": 2000,
             "data_faturacao": "2025-09-24  11:37",
@@ -5254,17 +5286,6 @@
             "ultima_actualizacao": "2025-09-24T11:37:58.000Z",
             "estado": "Pendente",
             "tipo_faturacao": "Físico",
-            "forma_pagamento": "Quinzenal",
-            "agente_id": 696246,
-            "usuario_id": 1
-        },
-        {
-            "id_facturacao": 838,
-            "valor": 13000,
-            "data_faturacao": "2025-09-24  11:37",
-            "ultima_actualizacao": "2025-09-24T11:37:37.000Z",
-            "estado": "Pendente",
-            "tipo_faturacao": "Electrônico",
             "forma_pagamento": "Quinzenal",
             "agente_id": 696246,
             "usuario_id": 1
@@ -5633,17 +5654,6 @@
             "usuario_id": 1
         },
         {
-            "id_facturacao": 804,
-            "valor": 5000,
-            "data_faturacao": "2025-09-24  08:37",
-            "ultima_actualizacao": "2025-09-24T08:37:29.000Z",
-            "estado": "Pendente",
-            "tipo_faturacao": "Electrônico",
-            "forma_pagamento": "Quinzenal",
-            "agente_id": 639312,
-            "usuario_id": 1
-        },
-        {
             "id_facturacao": 803,
             "valor": 11500,
             "data_faturacao": "2025-09-24  08:37",
@@ -5652,6 +5662,17 @@
             "tipo_faturacao": "Electrônico",
             "forma_pagamento": "Quinzenal",
             "agente_id": 622640,
+            "usuario_id": 1
+        },
+        {
+            "id_facturacao": 804,
+            "valor": 5000,
+            "data_faturacao": "2025-09-24  08:37",
+            "ultima_actualizacao": "2025-09-24T08:37:29.000Z",
+            "estado": "Pendente",
+            "tipo_faturacao": "Electrônico",
+            "forma_pagamento": "Quinzenal",
+            "agente_id": 639312,
             "usuario_id": 1
         },
         {
@@ -5903,17 +5924,6 @@
             "ultima_actualizacao": "2025-09-24T07:23:48.000Z",
             "estado": "Pendente",
             "tipo_faturacao": "Electrônico",
-            "forma_pagamento": "Quinzenal",
-            "agente_id": 614029,
-            "usuario_id": 1
-        },
-        {
-            "id_facturacao": 780,
-            "valor": 10000,
-            "data_faturacao": "2025-09-24  07:23",
-            "ultima_actualizacao": "2025-09-24T07:23:48.000Z",
-            "estado": "Pendente",
-            "tipo_faturacao": "Físico",
             "forma_pagamento": "Quinzenal",
             "agente_id": 614029,
             "usuario_id": 1
@@ -7701,6 +7711,17 @@
             "usuario_id": 1
         },
         {
+            "id_facturacao": 601,
+            "valor": 16000,
+            "data_faturacao": "2025-09-22  11:47",
+            "ultima_actualizacao": "2025-09-22T11:47:23.000Z",
+            "estado": "Pendente",
+            "tipo_faturacao": "Electrônico",
+            "forma_pagamento": "Quinzenal",
+            "agente_id": 680095,
+            "usuario_id": 1
+        },
+        {
             "id_facturacao": 602,
             "valor": 10000,
             "data_faturacao": "2025-09-22  11:47",
@@ -7720,17 +7741,6 @@
             "tipo_faturacao": "Físico",
             "forma_pagamento": "Quinzenal",
             "agente_id": 648280,
-            "usuario_id": 1
-        },
-        {
-            "id_facturacao": 601,
-            "valor": 16000,
-            "data_faturacao": "2025-09-22  11:47",
-            "ultima_actualizacao": "2025-09-22T11:47:23.000Z",
-            "estado": "Pendente",
-            "tipo_faturacao": "Electrônico",
-            "forma_pagamento": "Quinzenal",
-            "agente_id": 680095,
             "usuario_id": 1
         },
         {
@@ -7976,6 +7986,17 @@
             "usuario_id": 1
         },
         {
+            "id_facturacao": 575,
+            "valor": 39000,
+            "data_faturacao": "2025-09-22  10:18",
+            "ultima_actualizacao": "2025-09-22T10:18:22.000Z",
+            "estado": "Pendente",
+            "tipo_faturacao": "Electrônico",
+            "forma_pagamento": "Quinzenal",
+            "agente_id": 639320,
+            "usuario_id": 1
+        },
+        {
             "id_facturacao": 576,
             "valor": 15000,
             "data_faturacao": "2025-09-22  10:18",
@@ -7998,14 +8019,25 @@
             "usuario_id": 1
         },
         {
-            "id_facturacao": 575,
-            "valor": 39000,
-            "data_faturacao": "2025-09-22  10:18",
-            "ultima_actualizacao": "2025-09-22T10:18:22.000Z",
+            "id_facturacao": 571,
+            "valor": 5000,
+            "data_faturacao": "2025-09-22  09:38",
+            "ultima_actualizacao": "2025-09-22T09:38:19.000Z",
             "estado": "Pendente",
             "tipo_faturacao": "Electrônico",
             "forma_pagamento": "Quinzenal",
-            "agente_id": 639320,
+            "agente_id": 662841,
+            "usuario_id": 1
+        },
+        {
+            "id_facturacao": 572,
+            "valor": 4000,
+            "data_faturacao": "2025-09-22  09:38",
+            "ultima_actualizacao": "2025-09-22T09:38:19.000Z",
+            "estado": "Pendente",
+            "tipo_faturacao": "Físico",
+            "forma_pagamento": "Quinzenal",
+            "agente_id": 662841,
             "usuario_id": 1
         },
         {
@@ -8024,28 +8056,6 @@
             "valor": 4000,
             "data_faturacao": "2025-09-22  09:38",
             "ultima_actualizacao": "2025-09-22T09:38:20.000Z",
-            "estado": "Pendente",
-            "tipo_faturacao": "Físico",
-            "forma_pagamento": "Quinzenal",
-            "agente_id": 662841,
-            "usuario_id": 1
-        },
-        {
-            "id_facturacao": 571,
-            "valor": 5000,
-            "data_faturacao": "2025-09-22  09:38",
-            "ultima_actualizacao": "2025-09-22T09:38:19.000Z",
-            "estado": "Pendente",
-            "tipo_faturacao": "Electrônico",
-            "forma_pagamento": "Quinzenal",
-            "agente_id": 662841,
-            "usuario_id": 1
-        },
-        {
-            "id_facturacao": 572,
-            "valor": 4000,
-            "data_faturacao": "2025-09-22  09:38",
-            "ultima_actualizacao": "2025-09-22T09:38:19.000Z",
             "estado": "Pendente",
             "tipo_faturacao": "Físico",
             "forma_pagamento": "Quinzenal",
@@ -8075,17 +8085,6 @@
             "usuario_id": 1
         },
         {
-            "id_facturacao": 567,
-            "valor": 15000,
-            "data_faturacao": "2025-09-22  09:17",
-            "ultima_actualizacao": "2025-09-22T09:17:34.000Z",
-            "estado": "Pendente",
-            "tipo_faturacao": "Electrônico",
-            "forma_pagamento": "Quinzenal",
-            "agente_id": 696636,
-            "usuario_id": 1
-        },
-        {
             "id_facturacao": 565,
             "valor": 11000,
             "data_faturacao": "2025-09-22  09:17",
@@ -8105,6 +8104,17 @@
             "tipo_faturacao": "Físico",
             "forma_pagamento": "Quinzenal",
             "agente_id": 696374,
+            "usuario_id": 1
+        },
+        {
+            "id_facturacao": 567,
+            "valor": 15000,
+            "data_faturacao": "2025-09-22  09:17",
+            "ultima_actualizacao": "2025-09-22T09:17:34.000Z",
+            "estado": "Pendente",
+            "tipo_faturacao": "Electrônico",
+            "forma_pagamento": "Quinzenal",
+            "agente_id": 696636,
             "usuario_id": 1
         },
         {
@@ -8229,10 +8239,10 @@
             "usuario_id": 1
         },
         {
-            "id_facturacao": 553,
+            "id_facturacao": 552,
             "valor": 15000,
             "data_faturacao": "2025-09-22  08:08",
-            "ultima_actualizacao": "2025-09-22T08:08:36.000Z",
+            "ultima_actualizacao": "2025-09-22T08:08:25.000Z",
             "estado": "Pendente",
             "tipo_faturacao": "Electrônico",
             "forma_pagamento": "Mensal",
@@ -8240,10 +8250,10 @@
             "usuario_id": 1
         },
         {
-            "id_facturacao": 552,
+            "id_facturacao": 553,
             "valor": 15000,
             "data_faturacao": "2025-09-22  08:08",
-            "ultima_actualizacao": "2025-09-22T08:08:25.000Z",
+            "ultima_actualizacao": "2025-09-22T08:08:36.000Z",
             "estado": "Pendente",
             "tipo_faturacao": "Electrônico",
             "forma_pagamento": "Mensal",
@@ -8262,17 +8272,6 @@
             "usuario_id": 1
         },
         {
-            "id_facturacao": 550,
-            "valor": 8000,
-            "data_faturacao": "2025-09-22  07:55",
-            "ultima_actualizacao": "2025-09-22T07:55:47.000Z",
-            "estado": "Pendente",
-            "tipo_faturacao": "Electrônico",
-            "forma_pagamento": "Mensal",
-            "agente_id": 594679,
-            "usuario_id": 1
-        },
-        {
             "id_facturacao": 549,
             "valor": 21500,
             "data_faturacao": "2025-09-22  07:55",
@@ -8281,6 +8280,17 @@
             "tipo_faturacao": "Electrônico",
             "forma_pagamento": "Quinzenal",
             "agente_id": 671971,
+            "usuario_id": 1
+        },
+        {
+            "id_facturacao": 550,
+            "valor": 8000,
+            "data_faturacao": "2025-09-22  07:55",
+            "ultima_actualizacao": "2025-09-22T07:55:47.000Z",
+            "estado": "Pendente",
+            "tipo_faturacao": "Electrônico",
+            "forma_pagamento": "Mensal",
+            "agente_id": 594679,
             "usuario_id": 1
         },
         {
@@ -8526,17 +8536,6 @@
             "usuario_id": 1
         },
         {
-            "id_facturacao": 526,
-            "valor": 30000,
-            "data_faturacao": "2025-09-21  11:09",
-            "ultima_actualizacao": "2025-09-21T11:09:43.000Z",
-            "estado": "Pendente",
-            "tipo_faturacao": "Electrônico",
-            "forma_pagamento": "Quinzenal",
-            "agente_id": 649572,
-            "usuario_id": 1
-        },
-        {
             "id_facturacao": 525,
             "valor": 14000,
             "data_faturacao": "2025-09-21  11:09",
@@ -8545,6 +8544,17 @@
             "tipo_faturacao": "Electrônico",
             "forma_pagamento": "Quinzenal",
             "agente_id": 615747,
+            "usuario_id": 1
+        },
+        {
+            "id_facturacao": 526,
+            "valor": 30000,
+            "data_faturacao": "2025-09-21  11:09",
+            "ultima_actualizacao": "2025-09-21T11:09:43.000Z",
+            "estado": "Pendente",
+            "tipo_faturacao": "Electrônico",
+            "forma_pagamento": "Quinzenal",
+            "agente_id": 649572,
             "usuario_id": 1
         },
         {
@@ -8570,17 +8580,6 @@
             "usuario_id": 1
         },
         {
-            "id_facturacao": 522,
-            "valor": 9500,
-            "data_faturacao": "2025-09-21  11:01",
-            "ultima_actualizacao": "2025-09-21T11:01:53.000Z",
-            "estado": "Pendente",
-            "tipo_faturacao": "Electrônico",
-            "forma_pagamento": "Quinzenal",
-            "agente_id": 548729,
-            "usuario_id": 1
-        },
-        {
             "id_facturacao": 521,
             "valor": 9000,
             "data_faturacao": "2025-09-21  11:01",
@@ -8589,6 +8588,17 @@
             "tipo_faturacao": "Electrônico",
             "forma_pagamento": "Quinzenal",
             "agente_id": 655935,
+            "usuario_id": 1
+        },
+        {
+            "id_facturacao": 522,
+            "valor": 9500,
+            "data_faturacao": "2025-09-21  11:01",
+            "ultima_actualizacao": "2025-09-21T11:01:53.000Z",
+            "estado": "Pendente",
+            "tipo_faturacao": "Electrônico",
+            "forma_pagamento": "Quinzenal",
+            "agente_id": 548729,
             "usuario_id": 1
         },
         {
@@ -8680,17 +8690,6 @@
             "usuario_id": 1
         },
         {
-            "id_facturacao": 512,
-            "valor": 20000,
-            "data_faturacao": "2025-09-21  10:39",
-            "ultima_actualizacao": "2025-09-21T10:39:36.000Z",
-            "estado": "Pendente",
-            "tipo_faturacao": "Electrônico",
-            "forma_pagamento": "Quinzenal",
-            "agente_id": 696374,
-            "usuario_id": 1
-        },
-        {
             "id_facturacao": 510,
             "valor": 10000,
             "data_faturacao": "2025-09-21  10:39",
@@ -8708,6 +8707,17 @@
             "ultima_actualizacao": "2025-09-21T10:39:22.000Z",
             "estado": "Pendente",
             "tipo_faturacao": "Físico",
+            "forma_pagamento": "Quinzenal",
+            "agente_id": 696374,
+            "usuario_id": 1
+        },
+        {
+            "id_facturacao": 512,
+            "valor": 20000,
+            "data_faturacao": "2025-09-21  10:39",
+            "ultima_actualizacao": "2025-09-21T10:39:36.000Z",
+            "estado": "Pendente",
+            "tipo_faturacao": "Electrônico",
             "forma_pagamento": "Quinzenal",
             "agente_id": 696374,
             "usuario_id": 1
@@ -8823,17 +8833,6 @@
             "usuario_id": 1
         },
         {
-            "id_facturacao": 499,
-            "valor": 10500,
-            "data_faturacao": "2025-09-21  09:42",
-            "ultima_actualizacao": "2025-09-21T09:42:56.000Z",
-            "estado": "Pendente",
-            "tipo_faturacao": "Electrônico",
-            "forma_pagamento": "Quinzenal",
-            "agente_id": 647549,
-            "usuario_id": 1
-        },
-        {
             "id_facturacao": 498,
             "valor": 17500,
             "data_faturacao": "2025-09-21  09:42",
@@ -8842,6 +8841,17 @@
             "tipo_faturacao": "Electrônico",
             "forma_pagamento": "Quinzenal",
             "agente_id": 600734,
+            "usuario_id": 1
+        },
+        {
+            "id_facturacao": 499,
+            "valor": 10500,
+            "data_faturacao": "2025-09-21  09:42",
+            "ultima_actualizacao": "2025-09-21T09:42:56.000Z",
+            "estado": "Pendente",
+            "tipo_faturacao": "Electrônico",
+            "forma_pagamento": "Quinzenal",
+            "agente_id": 647549,
             "usuario_id": 1
         },
         {
@@ -9230,17 +9240,6 @@
             "usuario_id": 1
         },
         {
-            "id_facturacao": 461,
-            "valor": 8000,
-            "data_faturacao": "2025-09-20  15:56",
-            "ultima_actualizacao": "2025-09-20T15:56:55.000Z",
-            "estado": "Pendente",
-            "tipo_faturacao": "Electrônico",
-            "forma_pagamento": "Quinzenal",
-            "agente_id": 620104,
-            "usuario_id": 1
-        },
-        {
             "id_facturacao": 460,
             "valor": 5000,
             "data_faturacao": "2025-09-20  15:56",
@@ -9249,6 +9248,17 @@
             "tipo_faturacao": "Físico",
             "forma_pagamento": "Quinzenal",
             "agente_id": 684526,
+            "usuario_id": 1
+        },
+        {
+            "id_facturacao": 461,
+            "valor": 8000,
+            "data_faturacao": "2025-09-20  15:56",
+            "ultima_actualizacao": "2025-09-20T15:56:55.000Z",
+            "estado": "Pendente",
+            "tipo_faturacao": "Electrônico",
+            "forma_pagamento": "Quinzenal",
+            "agente_id": 620104,
             "usuario_id": 1
         },
         {
@@ -9285,17 +9295,6 @@
             "usuario_id": 1
         },
         {
-            "id_facturacao": 456,
-            "valor": 21000,
-            "data_faturacao": "2025-09-20  15:53",
-            "ultima_actualizacao": "2025-09-20T15:53:38.000Z",
-            "estado": "Pendente",
-            "tipo_faturacao": "Electrônico",
-            "forma_pagamento": "Quinzenal",
-            "agente_id": 602885,
-            "usuario_id": 1
-        },
-        {
             "id_facturacao": 455,
             "valor": 5000,
             "data_faturacao": "2025-09-20  15:53",
@@ -9304,6 +9303,17 @@
             "tipo_faturacao": "Electrônico",
             "forma_pagamento": "Mensal",
             "agente_id": 594679,
+            "usuario_id": 1
+        },
+        {
+            "id_facturacao": 456,
+            "valor": 21000,
+            "data_faturacao": "2025-09-20  15:53",
+            "ultima_actualizacao": "2025-09-20T15:53:38.000Z",
+            "estado": "Pendente",
+            "tipo_faturacao": "Electrônico",
+            "forma_pagamento": "Quinzenal",
+            "agente_id": 602885,
             "usuario_id": 1
         },
         {
@@ -9494,17 +9504,6 @@
             "usuario_id": 1
         },
         {
-            "id_facturacao": 437,
-            "valor": 17000,
-            "data_faturacao": "2025-09-20  15:28",
-            "ultima_actualizacao": "2025-09-20T15:28:47.000Z",
-            "estado": "Pendente",
-            "tipo_faturacao": "Físico",
-            "forma_pagamento": "Quinzenal",
-            "agente_id": 655939,
-            "usuario_id": 1
-        },
-        {
             "id_facturacao": 436,
             "valor": 16000,
             "data_faturacao": "2025-09-20  15:28",
@@ -9513,6 +9512,17 @@
             "tipo_faturacao": "Electrônico",
             "forma_pagamento": "Quinzenal",
             "agente_id": 660885,
+            "usuario_id": 1
+        },
+        {
+            "id_facturacao": 437,
+            "valor": 17000,
+            "data_faturacao": "2025-09-20  15:28",
+            "ultima_actualizacao": "2025-09-20T15:28:47.000Z",
+            "estado": "Pendente",
+            "tipo_faturacao": "Físico",
+            "forma_pagamento": "Quinzenal",
+            "agente_id": 655939,
             "usuario_id": 1
         },
         {
@@ -9538,17 +9548,6 @@
             "usuario_id": 1
         },
         {
-            "id_facturacao": 433,
-            "valor": 22000,
-            "data_faturacao": "2025-09-20  15:23",
-            "ultima_actualizacao": "2025-09-20T15:23:54.000Z",
-            "estado": "Pendente",
-            "tipo_faturacao": "Físico",
-            "forma_pagamento": "Quinzenal",
-            "agente_id": 666489,
-            "usuario_id": 1
-        },
-        {
             "id_facturacao": 432,
             "valor": 10500,
             "data_faturacao": "2025-09-20  15:23",
@@ -9557,6 +9556,17 @@
             "tipo_faturacao": "Físico",
             "forma_pagamento": "Quinzenal",
             "agente_id": 655935,
+            "usuario_id": 1
+        },
+        {
+            "id_facturacao": 433,
+            "valor": 22000,
+            "data_faturacao": "2025-09-20  15:23",
+            "ultima_actualizacao": "2025-09-20T15:23:54.000Z",
+            "estado": "Pendente",
+            "tipo_faturacao": "Físico",
+            "forma_pagamento": "Quinzenal",
+            "agente_id": 666489,
             "usuario_id": 1
         },
         {
@@ -9780,14 +9790,14 @@
             "usuario_id": 1
         },
         {
-            "id_facturacao": 408,
-            "valor": 5500,
+            "id_facturacao": 406,
+            "valor": 12500,
             "data_faturacao": "2025-09-20  13:56",
-            "ultima_actualizacao": "2025-09-20T13:56:53.000Z",
+            "ultima_actualizacao": "2025-09-20T13:56:07.000Z",
             "estado": "Pendente",
-            "tipo_faturacao": "Electrônico",
+            "tipo_faturacao": "Físico",
             "forma_pagamento": "Quinzenal",
-            "agente_id": 613524,
+            "agente_id": 567285,
             "usuario_id": 1
         },
         {
@@ -9802,14 +9812,14 @@
             "usuario_id": 1
         },
         {
-            "id_facturacao": 406,
-            "valor": 12500,
+            "id_facturacao": 408,
+            "valor": 5500,
             "data_faturacao": "2025-09-20  13:56",
-            "ultima_actualizacao": "2025-09-20T13:56:07.000Z",
+            "ultima_actualizacao": "2025-09-20T13:56:53.000Z",
             "estado": "Pendente",
-            "tipo_faturacao": "Físico",
+            "tipo_faturacao": "Electrônico",
             "forma_pagamento": "Quinzenal",
-            "agente_id": 567285,
+            "agente_id": 613524,
             "usuario_id": 1
         },
         {
@@ -9890,14 +9900,14 @@
             "usuario_id": 1
         },
         {
-            "id_facturacao": 396,
-            "valor": 8500,
+            "id_facturacao": 394,
+            "valor": 5000,
             "data_faturacao": "2025-09-20  12:56",
-            "ultima_actualizacao": "2025-09-20T12:56:47.000Z",
+            "ultima_actualizacao": "2025-09-20T12:56:14.000Z",
             "estado": "Pendente",
-            "tipo_faturacao": "Electrônico",
+            "tipo_faturacao": "Físico",
             "forma_pagamento": "Quinzenal",
-            "agente_id": 639713,
+            "agente_id": 659909,
             "usuario_id": 1
         },
         {
@@ -9912,14 +9922,25 @@
             "usuario_id": 1
         },
         {
-            "id_facturacao": 394,
-            "valor": 5000,
+            "id_facturacao": 396,
+            "valor": 8500,
             "data_faturacao": "2025-09-20  12:56",
-            "ultima_actualizacao": "2025-09-20T12:56:14.000Z",
+            "ultima_actualizacao": "2025-09-20T12:56:47.000Z",
+            "estado": "Pendente",
+            "tipo_faturacao": "Electrônico",
+            "forma_pagamento": "Quinzenal",
+            "agente_id": 639713,
+            "usuario_id": 1
+        },
+        {
+            "id_facturacao": 391,
+            "valor": 4000,
+            "data_faturacao": "2025-09-20  12:55",
+            "ultima_actualizacao": "2025-09-20T12:55:29.000Z",
             "estado": "Pendente",
             "tipo_faturacao": "Físico",
             "forma_pagamento": "Quinzenal",
-            "agente_id": 659909,
+            "agente_id": 638588,
             "usuario_id": 1
         },
         {
@@ -9942,17 +9963,6 @@
             "tipo_faturacao": "Físico",
             "forma_pagamento": "Quinzenal",
             "agente_id": 681426,
-            "usuario_id": 1
-        },
-        {
-            "id_facturacao": 391,
-            "valor": 4000,
-            "data_faturacao": "2025-09-20  12:55",
-            "ultima_actualizacao": "2025-09-20T12:55:29.000Z",
-            "estado": "Pendente",
-            "tipo_faturacao": "Físico",
-            "forma_pagamento": "Quinzenal",
-            "agente_id": 638588,
             "usuario_id": 1
         },
         {
@@ -10462,6 +10472,17 @@
             "usuario_id": 1
         },
         {
+            "id_facturacao": 343,
+            "valor": 7000,
+            "data_faturacao": "2025-09-19  15:05",
+            "ultima_actualizacao": "2025-09-19T15:05:03.000Z",
+            "estado": "Pendente",
+            "tipo_faturacao": "Electrônico",
+            "forma_pagamento": "Quinzenal",
+            "agente_id": 548729,
+            "usuario_id": 1
+        },
+        {
             "id_facturacao": 344,
             "valor": 3000,
             "data_faturacao": "2025-09-19  15:05",
@@ -10481,17 +10502,6 @@
             "tipo_faturacao": "Físico",
             "forma_pagamento": "Quinzenal",
             "agente_id": 655935,
-            "usuario_id": 1
-        },
-        {
-            "id_facturacao": 343,
-            "valor": 7000,
-            "data_faturacao": "2025-09-19  15:05",
-            "ultima_actualizacao": "2025-09-19T15:05:03.000Z",
-            "estado": "Pendente",
-            "tipo_faturacao": "Electrônico",
-            "forma_pagamento": "Quinzenal",
-            "agente_id": 548729,
             "usuario_id": 1
         },
         {
@@ -10704,17 +10714,6 @@
             "usuario_id": 1
         },
         {
-            "id_facturacao": 323,
-            "valor": 5000,
-            "data_faturacao": "2025-09-19  14:34",
-            "ultima_actualizacao": "2025-09-19T14:34:30.000Z",
-            "estado": "Pendente",
-            "tipo_faturacao": "Electrônico",
-            "forma_pagamento": "Quinzenal",
-            "agente_id": 695796,
-            "usuario_id": 1
-        },
-        {
             "id_facturacao": 321,
             "valor": 10000,
             "data_faturacao": "2025-09-19  14:34",
@@ -10732,6 +10731,17 @@
             "ultima_actualizacao": "2025-09-19T14:34:05.000Z",
             "estado": "Pendente",
             "tipo_faturacao": "Físico",
+            "forma_pagamento": "Quinzenal",
+            "agente_id": 695796,
+            "usuario_id": 1
+        },
+        {
+            "id_facturacao": 323,
+            "valor": 5000,
+            "data_faturacao": "2025-09-19  14:34",
+            "ultima_actualizacao": "2025-09-19T14:34:30.000Z",
+            "estado": "Pendente",
+            "tipo_faturacao": "Electrônico",
             "forma_pagamento": "Quinzenal",
             "agente_id": 695796,
             "usuario_id": 1
@@ -11188,28 +11198,6 @@
             "usuario_id": 1
         },
         {
-            "id_facturacao": 277,
-            "valor": 1500,
-            "data_faturacao": "2025-09-18  15:26",
-            "ultima_actualizacao": "2025-09-18T15:26:45.000Z",
-            "estado": "Pendente",
-            "tipo_faturacao": "Electrônico",
-            "forma_pagamento": "Quinzenal",
-            "agente_id": 655935,
-            "usuario_id": 1
-        },
-        {
-            "id_facturacao": 278,
-            "valor": 3000,
-            "data_faturacao": "2025-09-18  15:26",
-            "ultima_actualizacao": "2025-09-18T15:26:45.000Z",
-            "estado": "Pendente",
-            "tipo_faturacao": "Físico",
-            "forma_pagamento": "Quinzenal",
-            "agente_id": 655935,
-            "usuario_id": 1
-        },
-        {
             "id_facturacao": 275,
             "valor": 5000,
             "data_faturacao": "2025-09-18  15:26",
@@ -11229,6 +11217,28 @@
             "tipo_faturacao": "Físico",
             "forma_pagamento": "Quinzenal",
             "agente_id": 613524,
+            "usuario_id": 1
+        },
+        {
+            "id_facturacao": 277,
+            "valor": 1500,
+            "data_faturacao": "2025-09-18  15:26",
+            "ultima_actualizacao": "2025-09-18T15:26:45.000Z",
+            "estado": "Pendente",
+            "tipo_faturacao": "Electrônico",
+            "forma_pagamento": "Quinzenal",
+            "agente_id": 655935,
+            "usuario_id": 1
+        },
+        {
+            "id_facturacao": 278,
+            "valor": 3000,
+            "data_faturacao": "2025-09-18  15:26",
+            "ultima_actualizacao": "2025-09-18T15:26:45.000Z",
+            "estado": "Pendente",
+            "tipo_faturacao": "Físico",
+            "forma_pagamento": "Quinzenal",
+            "agente_id": 655935,
             "usuario_id": 1
         },
         {
@@ -11320,17 +11330,6 @@
             "usuario_id": 1
         },
         {
-            "id_facturacao": 266,
-            "valor": 7000,
-            "data_faturacao": "2025-09-18  15:11",
-            "ultima_actualizacao": "2025-09-18T15:11:58.000Z",
-            "estado": "Pendente",
-            "tipo_faturacao": "Físico",
-            "forma_pagamento": "Quinzenal",
-            "agente_id": 578653,
-            "usuario_id": 1
-        },
-        {
             "id_facturacao": 265,
             "valor": 30000,
             "data_faturacao": "2025-09-18  15:11",
@@ -11339,6 +11338,17 @@
             "tipo_faturacao": "Electrônico",
             "forma_pagamento": "Quinzenal",
             "agente_id": 602885,
+            "usuario_id": 1
+        },
+        {
+            "id_facturacao": 266,
+            "valor": 7000,
+            "data_faturacao": "2025-09-18  15:11",
+            "ultima_actualizacao": "2025-09-18T15:11:58.000Z",
+            "estado": "Pendente",
+            "tipo_faturacao": "Físico",
+            "forma_pagamento": "Quinzenal",
+            "agente_id": 578653,
             "usuario_id": 1
         },
         {
@@ -11397,17 +11407,6 @@
             "usuario_id": 1
         },
         {
-            "id_facturacao": 259,
-            "valor": 11000,
-            "data_faturacao": "2025-09-18  15:02",
-            "ultima_actualizacao": "2025-09-18T15:02:42.000Z",
-            "estado": "Pendente",
-            "tipo_faturacao": "Electrônico",
-            "forma_pagamento": "Quinzenal",
-            "agente_id": 600734,
-            "usuario_id": 1
-        },
-        {
             "id_facturacao": 258,
             "valor": 4000,
             "data_faturacao": "2025-09-18  15:02",
@@ -11416,6 +11415,17 @@
             "tipo_faturacao": "Electrônico",
             "forma_pagamento": "Quinzenal",
             "agente_id": 680092,
+            "usuario_id": 1
+        },
+        {
+            "id_facturacao": 259,
+            "valor": 11000,
+            "data_faturacao": "2025-09-18  15:02",
+            "ultima_actualizacao": "2025-09-18T15:02:42.000Z",
+            "estado": "Pendente",
+            "tipo_faturacao": "Electrônico",
+            "forma_pagamento": "Quinzenal",
+            "agente_id": 600734,
             "usuario_id": 1
         },
         {
@@ -11837,10 +11847,10 @@
             "usuario_id": 1
         },
         {
-            "id_facturacao": 219,
-            "valor": 5500,
+            "id_facturacao": 218,
+            "valor": 6000,
             "data_faturacao": "2025-09-18  09:21",
-            "ultima_actualizacao": "2025-09-18T09:21:49.000Z",
+            "ultima_actualizacao": "2025-09-18T09:21:37.000Z",
             "estado": "Pendente",
             "tipo_faturacao": "Electrônico",
             "forma_pagamento": "Quinzenal",
@@ -11848,10 +11858,10 @@
             "usuario_id": 1
         },
         {
-            "id_facturacao": 218,
-            "valor": 6000,
+            "id_facturacao": 219,
+            "valor": 5500,
             "data_faturacao": "2025-09-18  09:21",
-            "ultima_actualizacao": "2025-09-18T09:21:37.000Z",
+            "ultima_actualizacao": "2025-09-18T09:21:49.000Z",
             "estado": "Pendente",
             "tipo_faturacao": "Electrônico",
             "forma_pagamento": "Quinzenal",
@@ -12563,23 +12573,23 @@
             "usuario_id": 1
         },
         {
-            "id_facturacao": 153,
-            "valor": 12500,
-            "data_faturacao": "2025-09-17  12:18",
-            "ultima_actualizacao": "2025-09-17T12:18:20.000Z",
-            "estado": "Pendente",
-            "tipo_faturacao": "Electrônico",
-            "forma_pagamento": "Quinzenal",
-            "agente_id": 660461,
-            "usuario_id": 1
-        },
-        {
             "id_facturacao": 152,
             "valor": 23500,
             "data_faturacao": "2025-09-17  12:18",
             "ultima_actualizacao": "2025-09-17T12:18:01.000Z",
             "estado": "Pendente",
             "tipo_faturacao": "Físico",
+            "forma_pagamento": "Quinzenal",
+            "agente_id": 660461,
+            "usuario_id": 1
+        },
+        {
+            "id_facturacao": 153,
+            "valor": 12500,
+            "data_faturacao": "2025-09-17  12:18",
+            "ultima_actualizacao": "2025-09-17T12:18:20.000Z",
+            "estado": "Pendente",
+            "tipo_faturacao": "Electrônico",
             "forma_pagamento": "Quinzenal",
             "agente_id": 660461,
             "usuario_id": 1
@@ -13091,10 +13101,10 @@
             "usuario_id": 1
         },
         {
-            "id_facturacao": 103,
-            "valor": 5000,
+            "id_facturacao": 102,
+            "valor": 10000,
             "data_faturacao": "2025-09-17  07:44",
-            "ultima_actualizacao": "2025-09-17T07:44:41.000Z",
+            "ultima_actualizacao": "2025-09-17T07:44:27.000Z",
             "estado": "Pendente",
             "tipo_faturacao": "Electrônico",
             "forma_pagamento": "Quinzenal",
@@ -13102,10 +13112,10 @@
             "usuario_id": 1
         },
         {
-            "id_facturacao": 102,
-            "valor": 10000,
+            "id_facturacao": 103,
+            "valor": 5000,
             "data_faturacao": "2025-09-17  07:44",
-            "ultima_actualizacao": "2025-09-17T07:44:27.000Z",
+            "ultima_actualizacao": "2025-09-17T07:44:41.000Z",
             "estado": "Pendente",
             "tipo_faturacao": "Electrônico",
             "forma_pagamento": "Quinzenal",
@@ -13190,23 +13200,23 @@
             "usuario_id": 1
         },
         {
-            "id_facturacao": 93,
-            "valor": 10000,
-            "data_faturacao": "2025-09-17  07:25",
-            "ultima_actualizacao": "2025-09-17T07:25:19.000Z",
-            "estado": "Pendente",
-            "tipo_faturacao": "Físico",
-            "forma_pagamento": "Quinzenal",
-            "agente_id": 685519,
-            "usuario_id": 1
-        },
-        {
             "id_facturacao": 92,
             "valor": 13000,
             "data_faturacao": "2025-09-17  07:25",
             "ultima_actualizacao": "2025-09-17T07:25:18.000Z",
             "estado": "Pendente",
             "tipo_faturacao": "Electrônico",
+            "forma_pagamento": "Quinzenal",
+            "agente_id": 685519,
+            "usuario_id": 1
+        },
+        {
+            "id_facturacao": 93,
+            "valor": 10000,
+            "data_faturacao": "2025-09-17  07:25",
+            "ultima_actualizacao": "2025-09-17T07:25:19.000Z",
+            "estado": "Pendente",
+            "tipo_faturacao": "Físico",
             "forma_pagamento": "Quinzenal",
             "agente_id": 685519,
             "usuario_id": 1
@@ -13399,17 +13409,6 @@
             "usuario_id": 1
         },
         {
-            "id_facturacao": 74,
-            "valor": 3500,
-            "data_faturacao": "2025-09-16  16:39",
-            "ultima_actualizacao": "2025-09-16T16:39:16.000Z",
-            "estado": "Pendente",
-            "tipo_faturacao": "Electrônico",
-            "forma_pagamento": "Quinzenal",
-            "agente_id": 613524,
-            "usuario_id": 1
-        },
-        {
             "id_facturacao": 72,
             "valor": 2500,
             "data_faturacao": "2025-09-16  16:39",
@@ -13427,6 +13426,17 @@
             "ultima_actualizacao": "2025-09-16T16:39:02.000Z",
             "estado": "Pendente",
             "tipo_faturacao": "Físico",
+            "forma_pagamento": "Quinzenal",
+            "agente_id": 613524,
+            "usuario_id": 1
+        },
+        {
+            "id_facturacao": 74,
+            "valor": 3500,
+            "data_faturacao": "2025-09-16  16:39",
+            "ultima_actualizacao": "2025-09-16T16:39:16.000Z",
+            "estado": "Pendente",
+            "tipo_faturacao": "Electrônico",
             "forma_pagamento": "Quinzenal",
             "agente_id": 613524,
             "usuario_id": 1
@@ -13597,10 +13607,10 @@
             "usuario_id": 1
         },
         {
-            "id_facturacao": 53,
-            "valor": 6500,
+            "id_facturacao": 52,
+            "valor": 5500,
             "data_faturacao": "2025-09-16  15:24",
-            "ultima_actualizacao": "2025-09-16T15:24:53.000Z",
+            "ultima_actualizacao": "2025-09-16T15:24:10.000Z",
             "estado": "Pendente",
             "tipo_faturacao": "Electrônico",
             "forma_pagamento": "Quinzenal",
@@ -13608,10 +13618,10 @@
             "usuario_id": 1
         },
         {
-            "id_facturacao": 52,
-            "valor": 5500,
+            "id_facturacao": 53,
+            "valor": 6500,
             "data_faturacao": "2025-09-16  15:24",
-            "ultima_actualizacao": "2025-09-16T15:24:10.000Z",
+            "ultima_actualizacao": "2025-09-16T15:24:53.000Z",
             "estado": "Pendente",
             "tipo_faturacao": "Electrônico",
             "forma_pagamento": "Quinzenal",
@@ -14156,6 +14166,27 @@
             "forma_pagamento": "Quinzenal",
             "agente_id": 639312,
             "usuario_id": 1
+        },
+        {
+            "id_facturacao": 780,
+            "valor": 10000,
+            "data_faturacao": "2025-09-12  06:23",
+            "ultima_actualizacao": "2025-09-24T07:23:48.000Z",
+            "estado": "Pendente",
+            "tipo_faturacao": "Físico",
+            "forma_pagamento": "Quinzenal",
+            "agente_id": 614029,
+            "usuario_id": 1
+        },
+        {
+            "id_facturacao": 1258,
+            "valor": 25000,
+            "data_faturacao": "2025-09-11  06:47",
+            "ultima_actualizacao": "2025-09-28T07:47:06.000Z",
+            "estado": "Pendente",
+            "tipo_faturacao": "Electrônico",
+            "forma_pagamento": "Quinzenal",
+            "agente_id": 614029,
+            "usuario_id": 1
         }
     ]
-}

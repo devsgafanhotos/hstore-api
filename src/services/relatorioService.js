@@ -313,7 +313,6 @@ class relatorioService {
     pagarVariosAgentes = async (dados) => {
         try {
             const pagamentosRegistrados = await pagamento.bulkCreate(dados);
-            console.log(pagamentosRegistrados);
 
             return {
                 successo: true,
@@ -1082,7 +1081,12 @@ class relatorioService {
                     !listaAgentesPagos.find((p) => p.agente_id === f.agente_id)
                 ) {
                     try {
-                        if (!nome || f.agente.nome.toLowerCase().includes(nome.toLowerCase())) {
+                        if (
+                            !nome ||
+                            f.agente.nome
+                                .toLowerCase()
+                                .includes(nome.toLowerCase())
+                        ) {
                             const bonus = this.calcularBonusAgente(
                                 f.TotalVendido
                             );
@@ -1110,6 +1114,36 @@ class relatorioService {
             listaAgentesNaoPagos: listaAgentesNaoPagos,
         };
         return pagamentosAgentesEncontrados;
+    };
+
+    /**
+     * Buscar todos os pagamentos
+     * @returns { Object| { pagamentos: Array,
+     * successo: Boolean,
+     * mensagem: String }}
+     */
+    pegarTodosPagamentos = async () => {
+        try {
+            const pagamentosEncontradas = await pagamentos.findAll({
+                raw: true,
+                nest: true,
+            });
+            if (pagamentosEncontradas.length == 0) {
+                return {
+                    successo: false,
+                    mensagem: "Nenhum pagamento encontrado!",
+                };
+            }
+
+            return {
+                pagamentos: pagamentosEncontradas,
+                successo: true,
+                mensagem: "Pagamentos encontrados!",
+            };
+        } catch (error) {
+            console.log("\nErro ao buscar pagamentos..." + error);
+            return { successo: false, mensagem: "Erro ao renderizar home!" };
+        }
     };
 }
 
