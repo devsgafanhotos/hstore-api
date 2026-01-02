@@ -16,62 +16,66 @@ const JWT_EXPIRES_IN = process.env.JWT_EXPIRATION;
  * Aplica hashing seguro e gera token JWT.
  */
 class AutenticacaoService {
-  /**
-   * Autentica um usuário usando telefone e senha.
-   * @param {{ telefone: string, senha: string }} credenciais - Credenciais do usuário.
-   * @returns {Promise<string|{msg: string}>} Token JWT ou mensagem de erro.
-   */
-  autenticar = async (credenciais) => {
-    try {
-      const { telefone, senha } = credenciais;
-      // Busca o usuário no banco de dados
-      const usuarioEncontrado = await usuario.findOne({
-        where: { telefone: telefone },
-      });
+    /**
+     * Autentica um usuário usando telefone e senha.
+     * @param {{ telefone: string, senha: string }} credenciais - Credenciais do usuário.
+     * @returns {Promise<string|{msg: string}>} Token JWT ou mensagem de erro.
+     */
+    autenticar = async (credenciais) => {
+        try {
+            const { telefone, senha } = credenciais;
+            // Busca o usuário no banco de dados
+            const usuarioEncontrado = await usuario.findOne({
+                where: { telefone: telefone },
+            });
 
-      if (!usuarioEncontrado) {
-        return { successo: false, mensagem: "Telefone incorreto!" };
-      }
+            if (!usuarioEncontrado) {
+                return { successo: false, mensagem: "Telefone incorreto!" };
+            }
 
-      // Verifica se encontrou e se a senha bate
-      const senhaValida = usuarioEncontrado
-        ? await bcrypt.compare(senha, usuarioEncontrado.senha)
-        : false;
+            // Verifica se encontrou e se a senha bate
+            const senhaValida = usuarioEncontrado
+                ? await bcrypt.compare(senha, usuarioEncontrado.senha)
+                : false;
 
-      if (!senhaValida) {
-        return { successo: false, mensagem: "Senha incorreta!" };
-      }
-      // Gera token JWT com dados essenciais do usuário
-      const token = jwt.sign(
-        {
-          id_usuario: usuarioEncontrado.id_usuario,
-          nome: usuarioEncontrado.nome,
-          tipo: usuarioEncontrado.tipo,
-          estado: usuarioEncontrado.estado,
-          data_criacao: usuarioEncontrado.data_criacao,
-          telefone: usuarioEncontrado.telefone,
-        },
-        JWT_SECRET,
-        { expiresIn: JWT_EXPIRES_IN }
-      );
-      return {
-        successo: true,
-        mensagem: "Logado",
-        token: token,
-        usuarioLogado: {
-          id_usuario: usuarioEncontrado.id_usuario,
-          nome: usuarioEncontrado.nome,
-          tipo: usuarioEncontrado.tipo,
-          estado: usuarioEncontrado.estado,
-          data_criacao: usuarioEncontrado.data_criacao,
-          telefone: usuarioEncontrado.telefone,
-        },
-      };
-    } catch (erro) {
-      console.error("Erro ao efeituar Login:", erro);
-      return { successo: false, mensagem: "Erro interno ao efeituar login" };
-    }
-  };
+            if (!senhaValida) {
+                return { successo: false, mensagem: "Senha incorreta!" };
+            }
+            // Gera token JWT com dados essenciais do usuário
+            const token = jwt.sign(
+                {
+                    id_usuario: usuarioEncontrado.id_usuario,
+                    nome: usuarioEncontrado.nome,
+                    tipo: usuarioEncontrado.tipo,
+                    estado: usuarioEncontrado.estado,
+                    data_criacao: usuarioEncontrado.data_criacao,
+                    telefone: usuarioEncontrado.telefone,
+                },
+                JWT_SECRET,
+                { expiresIn: JWT_EXPIRES_IN }
+            );
+            return {
+                successo: true,
+                mensagem: "Logado",
+                token: token,
+                usuarioLogado: {
+                    id_usuario: usuarioEncontrado.id_usuario,
+                    nome: usuarioEncontrado.nome,
+                    tipo: usuarioEncontrado.tipo,
+                    estado: usuarioEncontrado.estado,
+                    data_criacao: usuarioEncontrado.data_criacao,
+                    telefone: usuarioEncontrado.telefone,
+                },
+            };
+        } catch (erro) {
+            console.error("Erro ao efeituar Login:", erro);
+            return {
+                successo: false,
+                mensagem: "Erro interno ao efeituar login",
+                erro: erro,
+            };
+        }
+    };
 }
 
 module.exports = AutenticacaoService;

@@ -33,7 +33,7 @@ class AutenticacaoController {
     const response = await autenticacaoService.autenticar(credenciais);
 
     if (!response.successo) {
-      return res.status(302).json({ msg: response.mensagem });
+      return res.status(302).json({ msg: response.mensagem, error: response.erro });
     }
 
     // Autenticação bem-sucedida
