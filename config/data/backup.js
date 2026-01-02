@@ -19,7 +19,7 @@ sequelize
 
 try {
     //  /usuarios/ativos
-
+    
     const usuariosRegistrados = await modUsuarios.bulkCreate(usuarios);
     console.log("uusuariosRegistrados com sucesso...!");
 } catch (error) {

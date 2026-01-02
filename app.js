@@ -151,4 +151,4 @@ server
 db.sequelize
   .authenticate()
   .then(() => console.log("Banco de dados conectado"))
-  .catch((err) => console.error(" Erro na conexão com o banco:", err));
+  .catch((err) => console.error("Erro na conexão com o banco:", err));

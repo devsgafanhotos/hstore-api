@@ -377,10 +377,11 @@ class relatorioService {
                 [Op.and]: [
                     where(fn("YEAR", col("data_correspondente")), ano),
                     where(fn("MONTH", col("data_correspondente")), mes),
-                    where(col("parcela"), { [Op.like]: parcela }),
+                    where(col("parcela"), { [Op.like]: `%${parcela}%` }),
                 ],
             },
         });
+
         if (!totalPago) {
             totalPago = 0.0;
         }
@@ -393,10 +394,11 @@ class relatorioService {
                 [Op.and]: [
                     where(fn("YEAR", col("data_correspondente")), ano),
                     where(fn("MONTH", col("data_correspondente")), mes),
-                    where(col("parcela"), { [Op.like]: parcela }),
+                    where(col("parcela"), { [Op.like]: `%${parcela}%` }),
                 ],
             },
         });
+
         if (!agentesPagos) {
             agentesPagos = 0;
         }
@@ -836,28 +838,35 @@ class relatorioService {
          * @description Não se pagar um agente se o @período_de_faturação daquele mês estiver aberto
          */
         const mesAtual = new Date().getMonth() + 1;
+        const anoAtual = new Date().getFullYear();
         // Se a parcela for única ou a segunda
-        if (parcela == "Única" || parcela == "Segunda") {
-            /**
-             * @description O pagamento não pode ser feito no mesmo mês, ou seja só podemos pagar um agente na condição anterior no mês a seguir ao mês atual
-             */
-            if (mesAtual <= mes) {
-                return {
-                    successo: false,
-                    mensagem: "O período de faturação ainda está aberto!",
-                };
-            }
-        } else if (parcela == "Primeira") {
-            /**
-             * @description Se for a primeira parcela ela pode ser paga depois da primeira quinzena do mes atual
-             */
-            const diaAtual = new Date().toJSON().slice(8, 10);
-            if (mesAtual <= mes) {
-                if (diaAtual <= 15) {
+        if (anoAtual > ano) {
+            console.log("Ok");
+        } else {
+            // Se a parcela for única ou a segunda
+            if (parcela == "Única" || parcela == "Segunda") {
+                /**
+                 * @description O pagamento não pode ser feito no mesmo mês, ou seja só podemos pagar um agente na condição anterior no mês a seguir ao mês atual
+                 */
+                if (mesAtual <= mes) {
                     return {
                         successo: false,
                         mensagem: "O período de faturação ainda está aberto!",
                     };
+                }
+            } else if (parcela == "Primeira") {
+                /**
+                 * @description Se for a primeira parcela ela pode ser paga depois da primeira quinzena do mes atual
+                 */
+                const diaAtual = new Date().toJSON().slice(8, 10);
+                if (mesAtual <= mes) {
+                    if (diaAtual <= 15) {
+                        return {
+                            successo: false,
+                            mensagem:
+                                "O período de faturação ainda está aberto!",
+                        };
+                    }
                 }
             }
         }
@@ -1054,27 +1063,34 @@ class relatorioService {
          * @description Para ter a lista de agentes não pagos devemos estar fora do periodo de faturação
          */
         const mesAtual = new Date().getMonth() + 1;
+        const anoAtual = new Date().getFullYear();
         // Se a parcela for única ou a segunda
-        if (parcela.includes("Única") || parcela.includes("Segunda")) {
-            /**
-             * @description O pagamento não pode ser feito no mesmo mês, ou seja só podemos pagar um agente na condição anterior no mês a seguir ao mês atual
-             */
-            if (mesAtual <= mes) {
-                periodoFaturacao = false;
-            }
-        } else if (parcela.includes("Primeira")) {
-            /**
-             * @description Se for a primeira parcela ela pode ser paga depois da primeira quinzena do mes atual
-             */
-            const diaAtual = new Date().toJSON().slice(8, 10);
-            if (mesAtual <= mes) {
-                if (diaAtual <= 15) {
+        if (anoAtual > ano) {
+            periodoFaturacao = true;
+        } else {
+            if (parcela.includes("Única") || parcela.includes("Segunda")) {
+                /**
+                 * @description O pagamento não pode ser feito no mesmo mês, ou seja só podemos pagar um agente na condição anterior no mês a seguir ao mês atual
+                 */
+                if (mesAtual <= mes) {
                     periodoFaturacao = false;
+                }
+            } else if (parcela.includes("Primeira")) {
+                /**
+                 * @description Se for a primeira parcela ela pode ser paga depois da primeira quinzena do mes atual
+                 */
+                const diaAtual = new Date().toJSON().slice(8, 10);
+                if (mesAtual <= mes) {
+                    if (diaAtual <= 15) {
+                        periodoFaturacao = false;
+                    }
                 }
             }
         }
 
         let agentesNaoPagos = 0;
+        console.log(periodoFaturacao);
+
         if (periodoFaturacao) {
             for (const f of listaFaturacoes) {
                 if (
@@ -1128,6 +1144,8 @@ class relatorioService {
                 raw: true,
                 nest: true,
             });
+            console.log(pagamentosEncontradas);
+
             if (pagamentosEncontradas.length == 0) {
                 return {
                     successo: false,

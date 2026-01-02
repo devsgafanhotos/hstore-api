@@ -109,7 +109,7 @@ class relatorioController {
             if (!response.successo) {
                 return res.redirect("/");
             }
-
+            //res.json(response);
             res.render("pages/pagamento/efeituados", {
                 titulo: "Agentes pagos",
                 resumoMensal: response,
@@ -146,7 +146,7 @@ class relatorioController {
                 resumoMensal: response,
                 usuario_id: req.usuario.id_usuario,
                 successo: response.successo,
-                nome: nome
+                nome: nome,
             });
         } catch (error) {
             console.error("Erro ao buscar relatório mensal   :", error);
