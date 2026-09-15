@@ -212,7 +212,8 @@ class relatorioService {
             parcela
         );
         const pagamento = this.calcularBonusAgente(
-            resumoParcelarDoAgente.totalComprado
+            resumoParcelarDoAgente.totalComprado,
+            data
         );
 
         const relatorioFinal = {
@@ -788,12 +789,20 @@ class relatorioService {
     /**
      * Calcular o bonus do agente de acordo ao valor total faturaddo
      * @param { Number } comprasEfetuadas - Total comprado por um agente
+     * @param { Date } dataReferencia - Data correspondente ao período faturado
      * bonus: Number,
      * resto: Number,
      * caixas: Number,
      * }}}
      */
-    calcularBonusAgente(comprasEfetuadas) {
+    calcularBonusAgente(comprasEfetuadas, dataReferencia = new Date()) {
+        const valorMeiaCaixa = 12500;
+        const valorCaixaCompleta = 25000;
+        const bonusMeiaCaixa = 900;
+        const dataInicioBonusAtualizado = new Date(2026, 8, 1);
+        const bonusCaixaCompleta =
+            new Date(dataReferencia) >= dataInicioBonusAtualizado ? 1850 : 1800;
+
         let resumo = {
             bonus: 0.0,
             resto: 0.0,
@@ -802,17 +811,20 @@ class relatorioService {
 
         if (comprasEfetuadas == 0) {
             return resumo;
-        } else if (comprasEfetuadas % 12500 === 0) {
-            resumo.caixas = comprasEfetuadas / 25000;
-            resumo.bonus = (comprasEfetuadas / 25000) * 1800;
-            resumo.resto = 0;
-        } else {
-            // Pegamos o múltiplo de 12500 menor e mais próximo
-            const multiplo = Math.floor(comprasEfetuadas / 12500) * 12500;
-            resumo.caixas = multiplo / 25000;
-            resumo.bonus = (multiplo / 25000) * 1800;
-            resumo.resto = comprasEfetuadas - multiplo;
         }
+
+        // Pegamos o múltiplo de 12500 menor e mais próximo.
+        const multiplo =
+            Math.floor(comprasEfetuadas / valorMeiaCaixa) * valorMeiaCaixa;
+        const caixasCompletas = Math.floor(multiplo / valorCaixaCompleta);
+        const temMeiaCaixa =
+            multiplo % valorCaixaCompleta === valorMeiaCaixa;
+
+        resumo.caixas = multiplo / valorCaixaCompleta;
+        resumo.bonus =
+            caixasCompletas * bonusCaixaCompleta +
+            (temMeiaCaixa ? bonusMeiaCaixa : 0);
+        resumo.resto = comprasEfetuadas - multiplo;
 
         return resumo;
     }
@@ -1104,7 +1116,8 @@ class relatorioService {
                                 .includes(nome.toLowerCase())
                         ) {
                             const bonus = this.calcularBonusAgente(
-                                f.TotalVendido
+                                f.TotalVendido,
+                                data
                             );
                             listaAgentesNaoPagos.push({
                                 nome: f.agente.nome,
